@@ -7,3 +7,11 @@ Project Abstract
 ----------------
 
 There are a lot of fonts for Roman scripts but when it comes to fonts for Indic scripts like Devanagri, Bengali, Telugu, there is a dearth of good quality Open Type fonts. This tool would facilitate in providing tests enabling Font developers to contribute more to Open Type Indic fonts.
+
+This project is part of Google Summer of Code 2013.
+
+Student Name: Mayank Jha
+
+Mentor: Shreyank Gupta
+
+Melange URL: http://www.google-melange.com/gsoc/project/google/gsoc2013/mjnovice/42001
