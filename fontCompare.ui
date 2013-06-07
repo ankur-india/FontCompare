@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>801</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>Purpose of the Font</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Categorised Scores</string>
+         </property>
+         <widget class="QWidget" name="horizontalLayoutWidget_3">
+          <property name="geometry">
+           <rect>
+            <x>9</x>
+            <y>29</y>
+            <width>651</width>
+            <height>241</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QGroupBox" name="groupBox_7">
+             <property name="title">
+              <string>Glyph Consistency</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_6">
+             <property name="title">
+              <string>Readability and Print Proof</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="groupBox_5">
+             <property name="title">
+              <string>Similarity to the Standards Set</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Control Box</string>
+         </property>
+         <widget class="QComboBox" name="languageBox">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>130</y>
+            <width>85</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>Devanagri</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Bengali </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>English</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QPushButton" name="executeButton">
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>210</y>
+            <width>95</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Execute</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="loadTestpushButton">
+          <property name="geometry">
+           <rect>
+            <x>280</x>
+            <y>30</y>
+            <width>111</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Load Test File</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="testfilepath">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>271</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>                        &lt; Test File &gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="standardfilepath">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>271</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>                        &lt; Standard File &gt;</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="loadStandardpushButton">
+          <property name="geometry">
+           <rect>
+            <x>280</x>
+            <y>61</y>
+            <width>111</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Load Standard File</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>110</y>
+            <width>54</width>
+            <height>13</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Script:</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string>Test Results</string>
+         </property>
+         <widget class="QPushButton" name="pushButton">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>250</y>
+            <width>91</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Save To File</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>250</y>
+            <width>91</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Clear All</string>
+          </property>
+         </widget>
+         <widget class="QTextBrowser" name="MessageBox">
+          <property name="geometry">
+           <rect>
+            <x>15</x>
+            <y>30</y>
+            <width>331</width>
+            <height>211</height>
+           </rect>
+          </property>
+         </widget>
+         <zorder>pushButton</zorder>
+         <zorder>pushButton_2</zorder>
+         <zorder>MessageBox</zorder>
+         <zorder>groupBox_3</zorder>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionLoad_Font_File"/>
+    <addaction name="actionSave_Test_Results"/>
+   </widget>
+   <widget class="QMenu" name="menuE_dit">
+    <property name="title">
+     <string>E&amp;dit</string>
+    </property>
+    <addaction name="actionTest_Parameters"/>
+    <addaction name="actionManual_Testing"/>
+   </widget>
+   <widget class="QMenu" name="menuHe_lp">
+    <property name="title">
+     <string>He&amp;lp</string>
+    </property>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menuE_dit"/>
+   <addaction name="menuHe_lp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLoad_Font_File">
+   <property name="text">
+    <string>Load Font File</string>
+   </property>
+  </action>
+  <action name="actionSave_Test_Results">
+   <property name="text">
+    <string>Save Test Results</string>
+   </property>
+  </action>
+  <action name="actionTest_Parameters">
+   <property name="text">
+    <string>Test Parameters</string>
+   </property>
+  </action>
+  <action name="actionManual_Testing">
+   <property name="text">
+    <string>Manual Testing</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
