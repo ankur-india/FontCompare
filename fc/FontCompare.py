@@ -4,7 +4,7 @@ They are also for modifying a glyph by altering its
 serif, stroke , stem thickness, size, italic angle etc.
 and then later producing scores by doing bitmap comparision
 """
-from GlyphCompare import *
+from fc.GlyphCompare import *
 
 class FontCompare(object):
     ascentScore = 0

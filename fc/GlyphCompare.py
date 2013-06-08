@@ -1,5 +1,5 @@
 import fontforge
-from BitmapCompare import *
+from fc.BitmapCompare import *
 
 class GlyphCompare(object):
     Pixels = 10

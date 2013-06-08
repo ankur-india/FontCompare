@@ -1,11 +1,11 @@
-import PyQt4
+#! /usr/bin/python
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import sys
 import time
-from FontCompare import *
+from fc.FontCompare import *
 # Import the interface class
-import main_ui
+from fc import main_ui
  
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
     """ The second parent must be Ui_<obj. name of main widget class>. \
@@ -39,7 +39,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             QMessageBox.about(self, "Error", "The file could not be loaded!\n Please try again")
 
     def OpenStandardFile(self):
-        filename = QFileDialog.getOpenFileName(self, 'Standard File'))
+        filename = QFileDialog.getOpenFileName(self, 'Standard File')
         if fontforge.open(filename):
             QMessageBox.about(self, "Success", "The file was loaded successfully!")
             self.Standardfilepath = filename
