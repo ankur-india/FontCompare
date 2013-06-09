@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/fontCompare.ui'
 #
-# Created: Sun Jun  9 10:35:43 2013
+# Created: Sun Jun  9 09:57:58 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -100,11 +100,11 @@ class Ui_MainWindow(object):
         self.label_4 = QtGui.QLabel(self.layoutWidget1)
         self.label_4.setObjectName(_fromUtf8("label_4"))
         self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_4)
-        self.NormalScoreBar = QtGui.QProgressBar(self.layoutWidget1)
-        self.NormalScoreBar.setMaximum(10)
-        self.NormalScoreBar.setProperty("value", 0)
-        self.NormalScoreBar.setObjectName(_fromUtf8("NormalScoreBar"))
-        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.NormalScoreBar)
+        self.progressBar = QtGui.QProgressBar(self.layoutWidget1)
+        self.progressBar.setMaximum(10)
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setObjectName(_fromUtf8("progressBar"))
+        self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.progressBar)
         self.label_5 = QtGui.QLabel(self.layoutWidget1)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_5)
@@ -203,9 +203,9 @@ class Ui_MainWindow(object):
         self.label_17 = QtGui.QLabel(self.groupBox_3)
         self.label_17.setGeometry(QtCore.QRect(10, 150, 211, 16))
         self.label_17.setObjectName(_fromUtf8("label_17"))
-        self.ParametersCheckBox = QtGui.QCheckBox(self.groupBox_3)
-        self.ParametersCheckBox.setGeometry(QtCore.QRect(20, 170, 211, 21))
-        self.ParametersCheckBox.setObjectName(_fromUtf8("ParametersCheckBox"))
+        self.StandardCheckBox = QtGui.QCheckBox(self.groupBox_3)
+        self.StandardCheckBox.setGeometry(QtCore.QRect(20, 170, 211, 21))
+        self.StandardCheckBox.setObjectName(_fromUtf8("StandardCheckBox"))
         self.horizontalLayout_2.addWidget(self.groupBox_3)
         self.groupBox_4 = QtGui.QGroupBox(self.verticalLayoutWidget)
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
@@ -268,9 +268,9 @@ class Ui_MainWindow(object):
         self.progressBar_12.setFormat(QtGui.QApplication.translate("MainWindow", "%p", None, QtGui.QApplication.UnicodeUTF8))
         self.label_16.setText(QtGui.QApplication.translate("MainWindow", "Size(s) ", None, QtGui.QApplication.UnicodeUTF8))
         self.progressBar_13.setFormat(QtGui.QApplication.translate("MainWindow", "%p", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox_5.setTitle(QtGui.QApplication.translate("MainWindow", "Similarity to Standard font or Parameters", None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox_5.setTitle(QtGui.QApplication.translate("MainWindow", "Similarity to the Standards Set", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("MainWindow", "Normal", None, QtGui.QApplication.UnicodeUTF8))
-        self.NormalScoreBar.setFormat(QtGui.QApplication.translate("MainWindow", "%v", None, QtGui.QApplication.UnicodeUTF8))
+        self.progressBar.setFormat(QtGui.QApplication.translate("MainWindow", "%p", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "Bold ", None, QtGui.QApplication.UnicodeUTF8))
         self.progressBar_2.setFormat(QtGui.QApplication.translate("MainWindow", "%p", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("MainWindow", "Italic ", None, QtGui.QApplication.UnicodeUTF8))
@@ -310,8 +310,8 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(15, QtGui.QApplication.translate("MainWindow", "Display: Glow Signs", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox.setItemText(16, QtGui.QApplication.translate("MainWindow", "Display: LED Display", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox.setItemText(17, QtGui.QApplication.translate("MainWindow", "Display: TV/Mobiles Display", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "Compare with parameters:", None, QtGui.QApplication.UnicodeUTF8))
-        self.ParametersCheckBox.setText(QtGui.QApplication.translate("MainWindow", "Use Parameters for Test", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "Compare with standard parameters:", None, QtGui.QApplication.UnicodeUTF8))
+        self.StandardCheckBox.setText(QtGui.QApplication.translate("MainWindow", "Use Standard Parameters for Test", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_4.setTitle(QtGui.QApplication.translate("MainWindow", "Test Results", None, QtGui.QApplication.UnicodeUTF8))
         self.SaveMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Save To File", None, QtGui.QApplication.UnicodeUTF8))
         self.ClearMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Clear All", None, QtGui.QApplication.UnicodeUTF8))

@@ -30,16 +30,3 @@ class GlyphCompare(object):
             ansr = (1/float(ansr))*10
         return round((ansl+ansr)/2)
 
-    def boldbitmapScore(self,Testglyph,Standardglyph):
-        squishTestglyph=Testglyph
-        squishTestglyph.changeWeight(50,"auto",0,0,"squish")
-        Testglyph.changeWeight(50,"auto",0,0,"auto")
-        squishStandardglyph=Standardglyph
-        squishStandardglyph.changeWeight(50,"auto",0,0,"squish")
-        Standardglyph.changeWeight(50,"auto",0,0,"auto")
-        score1 = basicbitmapScore(squishTestglyph,squishStandardglyph)
-        score2 = basicbitmapScore(Testglyph,Standardglyph)
-        return float(score1+score2)/2
-
-
-        

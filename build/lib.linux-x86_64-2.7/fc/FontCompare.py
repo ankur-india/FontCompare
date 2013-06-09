@@ -18,30 +18,17 @@ class FontCompare(object):
     weightScore = 0
     xHeightScore = -1
     pureBitmapScore = -1
-    def font_compare(self, Testfont, Standardfont, glyphRange, resolution, ptsize, pixeldepth):
+    def font_compare(self, Testfont, Standardfont, glyphRange):
+
         scores = list()
         comparator = GlyphCompare()
-        pixelsize = (resolution*ptsize)/72
         for unicode_value in range (glyphRange[0],glyphRange[1]):
             if unicode_value in Standardfont:
                 if unicode_value in Testfont:
-                    comparator.initialise(pixelsize,pixeldepth)
+                    comparator.initialise(100,1)
                     glyphname=Standardfont[unicode_value].glyphname
                     glyphscore=comparator.basicbitmapScore(Standardfont[unicode_value], Testfont[unicode_value])
-                    scores.append((glyphname,round(glyphscore)))
-        return scores
-
-    def font_boldcompare(self, Testfont, Standardfont, glyphRange, resolution, ptsize, pixeldepth):
-        scores = list()
-        comparator = GlyphCompare()
-        pixelsize = (resolution*ptsize)/72
-        for unicode_value in range (glyphRange[0],glyphRange[1]):
-            if unicode_value in Standardfont:
-                if unicode_value in Testfont:
-                    comparator.initialise(pixelsize,pixeldepth)
-                    glyphname=Standardfont[unicode_value].glyphname
-                    glyphscore=comparator.boldbitmapScore(Standardfont[unicode_value], Testfont[unicode_value])
-                    scores.append((glyphname,round(glyphscore)))
+                    scores.append((glyphname,glyphscore))
         return scores
 
 class FontOS2Compare(object):

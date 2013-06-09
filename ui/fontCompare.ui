@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Font Compare</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -27,19 +27,6 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string>Purpose of the Font</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QGroupBox" name="groupBox">
          <property name="title">
           <string>Categorised Scores</string>
@@ -49,7 +36,7 @@
            <rect>
             <x>9</x>
             <y>29</y>
-            <width>651</width>
+            <width>781</width>
             <height>241</height>
            </rect>
           </property>
@@ -66,13 +53,260 @@
              <property name="title">
               <string>Readability and Print Proof</string>
              </property>
+             <widget class="QWidget" name="layoutWidget">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>50</y>
+                <width>241</width>
+                <height>149</height>
+               </rect>
+              </property>
+              <layout class="QFormLayout" name="formLayout_2">
+               <property name="fieldGrowthPolicy">
+                <enum>QFormLayout::ExpandingFieldsGrow</enum>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>High Resolution</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QProgressBar" name="progressBar_9">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>Low Resolution </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QProgressBar" name="progressBar_10">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>Low Light Read</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QProgressBar" name="progressBar_11">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>Standard Docs</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QProgressBar" name="progressBar_12">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>Size(s) </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QProgressBar" name="progressBar_13">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </item>
            <item>
             <widget class="QGroupBox" name="groupBox_5">
              <property name="title">
-              <string>Similarity to the Standards Set</string>
+              <string>Similarity to Standard font or Parameters</string>
              </property>
+             <widget class="QWidget" name="layoutWidget">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>50</y>
+                <width>241</width>
+                <height>148</height>
+               </rect>
+              </property>
+              <layout class="QFormLayout" name="formLayout">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>Normal</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QProgressBar" name="NormalScoreBar">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%v</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>Bold </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QProgressBar" name="progressBar_2">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>Italic </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QProgressBar" name="progressBar_3">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>Standard Docs</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QProgressBar" name="progressBar_7">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_11">
+                 <property name="text">
+                  <string>Size(s) </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QProgressBar" name="progressBar_8">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QProgressBar" name="progressBar_4">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%p</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>Basic Properties</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </item>
           </layout>
@@ -91,8 +325,8 @@
          <widget class="QComboBox" name="languageBox">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>130</y>
+            <x>250</x>
+            <y>220</y>
             <width>85</width>
             <height>23</height>
            </rect>
@@ -100,6 +334,11 @@
           <property name="editable">
            <bool>true</bool>
           </property>
+          <item>
+           <property name="text">
+            <string>All Range</string>
+           </property>
+          </item>
           <item>
            <property name="text">
             <string>Devanagri</string>
@@ -116,82 +355,211 @@
            </property>
           </item>
          </widget>
-         <widget class="QPushButton" name="executeButton">
+         <widget class="QPushButton" name="BeginTestButton">
           <property name="geometry">
            <rect>
             <x>290</x>
-            <y>210</y>
+            <y>30</y>
             <width>95</width>
-            <height>61</height>
+            <height>91</height>
            </rect>
           </property>
           <property name="text">
-           <string>Execute</string>
+           <string>Begin Test!</string>
           </property>
          </widget>
          <widget class="QPushButton" name="loadTestpushButton">
           <property name="geometry">
            <rect>
-            <x>280</x>
+            <x>10</x>
             <y>30</y>
-            <width>111</width>
+            <width>181</width>
             <height>31</height>
            </rect>
           </property>
           <property name="text">
-           <string>Load Test File</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="testfilepath">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>30</y>
-            <width>271</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>                        &lt; Test File &gt;</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="standardfilepath">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>70</y>
-            <width>271</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>                        &lt; Standard File &gt;</string>
+           <string>Load Test Font</string>
           </property>
          </widget>
          <widget class="QPushButton" name="loadStandardpushButton">
           <property name="geometry">
            <rect>
-            <x>280</x>
-            <y>61</y>
-            <width>111</width>
+            <x>10</x>
+            <y>100</y>
+            <width>131</width>
             <height>31</height>
            </rect>
           </property>
           <property name="text">
-           <string>Load Standard File</string>
+           <string>Load Standard Font</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>110</y>
+            <x>250</x>
+            <y>200</y>
             <width>54</width>
             <height>13</height>
            </rect>
           </property>
           <property name="text">
            <string>Script:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>201</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Compare with a standard font:</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>200</y>
+            <width>51</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Purpose:</string>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="comboBox">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>220</y>
+            <width>221</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+          <item>
+           <property name="text">
+            <string>None</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text : Books </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Magazines</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Newspapers</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Dictionaries</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Directories</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Greetings/Invitations</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Poetry</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Children Books</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Body Text: Advertisements</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Headline: Books</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Headline: Magazines</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Headline: Newspapers</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Headline: Advertisements</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Display: Posters/Signboards</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Display: Glow Signs</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Display: LED Display</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Display: TV/Mobiles Display</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QLabel" name="label_17">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>150</y>
+            <width>211</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Compare with parameters:</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="ParametersCheckBox">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>170</y>
+            <width>211</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Use Parameters for Test</string>
           </property>
          </widget>
         </widget>
@@ -201,26 +569,26 @@
          <property name="title">
           <string>Test Results</string>
          </property>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="SaveMessageBoxButton">
           <property name="geometry">
            <rect>
             <x>20</x>
-            <y>250</y>
+            <y>241</y>
             <width>91</width>
-            <height>22</height>
+            <height>31</height>
            </rect>
           </property>
           <property name="text">
            <string>Save To File</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="ClearMessageBoxButton">
           <property name="geometry">
            <rect>
             <x>120</x>
-            <y>250</y>
+            <y>241</y>
             <width>91</width>
-            <height>22</height>
+            <height>31</height>
            </rect>
           </property>
           <property name="text">
@@ -232,15 +600,11 @@
            <rect>
             <x>15</x>
             <y>30</y>
-            <width>331</width>
+            <width>371</width>
             <height>211</height>
            </rect>
           </property>
          </widget>
-         <zorder>pushButton</zorder>
-         <zorder>pushButton_2</zorder>
-         <zorder>MessageBox</zorder>
-         <zorder>groupBox_3</zorder>
         </widget>
        </item>
       </layout>

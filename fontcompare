@@ -8,32 +8,35 @@ from fc.FontCompare import *
 from fc import main_ui
  
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
-    """ The second parent must be Ui_<obj. name of main widget class>. \
-      If confusing, simply open up ImageViewer.py and get the class \
-      name used. I'd named mine as mainWindow and hence the use. """
+
     Testfilepath = ""
     Standardfilepath = ""
     def __init__(self, parent=None):
-        super(MainApp, self).__init__(parent)
+        super(MainApp, self).__init__(parent)#?????????????
         # This is because Python does not automatically
         # call the parent's constructor.
         self.setupUi(self)
         self.connectActions()
  
     def connectActions(self):
-        self.executeButton.clicked.connect(self.printMessage)
+        self.BeginTestButton.clicked.connect(self.BeginTest)
         self.loadTestpushButton.clicked.connect(self.OpenTestFile)
         self.loadStandardpushButton.clicked.connect(self.OpenStandardFile)
+        self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
+        self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
-    def main(self):
-        self.show()
+    def BeginTest(self):
+        if self.ParametersCheckBox.isChecked():
+            self.TestFromStandards(1)
+        else:
+            self.TestFromFont()
+
 
     def OpenTestFile(self):
         filename = QFileDialog.getOpenFileName(self, 'Test File')
         if fontforge.open(filename):
             QMessageBox.about(self, "Success", "The file was loaded successfully!")
             self.Testfilepath = filename
-            self.testfilepath.setText(filename)
             return
         else:
             QMessageBox.about(self, "Error", "The file could not be loaded!\n Please try again")
@@ -43,27 +46,64 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         if fontforge.open(filename):
             QMessageBox.about(self, "Success", "The file was loaded successfully!")
             self.Standardfilepath = filename
-            self.standardfilepath.setText(filename)
             return
         else:
             QMessageBox.about(self, "Error", "The file could not be loaded!\n Please try again")
 
+    def ClearMessage(self):
+        self.MessageBox.setText("")
 
-    def printMessage(self):
+    def SaveMessage(self):
+        content = self.MessageBox.toPlainText()
+        savefilename = QFileDialog.getSaveFileName(self, 'Save File')
+        myfile=open(savefilename,'w')
+        myfile.write(content)
+        myfile.close()
+
+    def TestFromStandards(self,choice):
+        self.PrintMessage("under construction")
+
+    def TestFromFont(self):
         start = time.clock()
+        if not self.Testfilepath or not self.Standardfilepath:
+            QMessageBox.about(self, "Warning!","Please load standard or test file")
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
         fc=FontCompare()
-        count=0
-        scores = fc.font_compare(fontA,fontB,(0x901,0x970))
+        final=0#0x901,0x970)
+        scores = fc.font_compare(fontA,fontB,self.GetScript())
+        for score in scores:
+            self.PrintMessage(str(score))
         total=len(scores)
-        for gltuple in scores:
-            self.MessageBox.append(str(gltuple))
-            count+=gltuple[1]
-        elapsed = (time.clock() - start)
-        self.MessageBox.append("The total score was "+str(count))
-        self.MessageBox.append("The execution time was "+str(elapsed))
-        
+        for gtuple in scores:
+            final+=gtuple[1]
+        if final:
+            final = (final/float(total))/10
+        else:
+            final = 0
+            self.PrintMessage("The test font has no glyphs for Selected Script Unicode characters")
+            
+        self.UpdateScoreBar(final)
+        elapsed = (time.clock() - start)    
+        self.PrintMessage("The total score was "+str(final))
+        self.PrintMessage("The execution time was "+str(elapsed))
+
+    def UpdateScoreBar(self,score):
+        self.NormalScoreBar.setValue(round(score))
+
+    def GetScript(self):
+        return (0x901,0x970)#self.LanguageBox.currentIndex()
+
+    def GetFontFilePaths(self):
+        print "under construction"
+
+    def PrintMessage(self,message):
+        self.MessageBox.append(message)
+
+
+    def main(self):
+        self.show()
+
 if __name__=='__main__':
     app = QApplication(sys.argv)
     mainApp = MainApp()
