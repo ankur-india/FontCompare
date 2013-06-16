@@ -37,9 +37,8 @@ class GlyphCompare(object):
         squishStandardglyph=Standardglyph
         squishStandardglyph.changeWeight(50,"auto",0,0,"squish")
         Standardglyph.changeWeight(50,"auto",0,0,"auto")
-        score1 = basicbitmapScore(squishTestglyph,squishStandardglyph)
-        score2 = basicbitmapScore(Testglyph,Standardglyph)
+        score1 = self.basicbitmapScore(squishTestglyph,squishStandardglyph)
+        score2 = self.basicbitmapScore(Testglyph,Standardglyph)
         return float(score1+score2)/2
-
-
-        
+    
+    #def strokebitmapcompare(self, glyph, linecap, linejoin, flags):

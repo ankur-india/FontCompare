@@ -46,6 +46,141 @@
              <property name="title">
               <string>Glyph Consistency</string>
              </property>
+             <widget class="QWidget" name="layoutWidget_2">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>50</y>
+                <width>241</width>
+                <height>149</height>
+               </rect>
+              </property>
+              <layout class="QFormLayout" name="formLayout_3">
+               <property name="fieldGrowthPolicy">
+                <enum>QFormLayout::ExpandingFieldsGrow</enum>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>Numerals</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QProgressBar" name="NumeralScoreBar">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%v</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>Consonants</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QProgressBar" name="ConsonantScoreBar">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%v</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_20">
+                 <property name="text">
+                  <string>Vowels</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QProgressBar" name="VowelScoreBar">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%v</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_21">
+                 <property name="text">
+                  <string>Marks</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QProgressBar" name="MarkScoreBar">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%v</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>Basic Test</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QProgressBar" name="BasicConsistencyScoreBar">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%v</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="scriptRoundingLabel">
+                 <property name="text">
+                  <string>SRounding</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QProgressBar" name="RoundingScoreBar">
+                 <property name="maximum">
+                  <number>10</number>
+                 </property>
+                 <property name="value">
+                  <number>0</number>
+                 </property>
+                 <property name="format">
+                  <string>%v</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </item>
            <item>
@@ -213,7 +348,7 @@
                 </widget>
                </item>
                <item row="1" column="1">
-                <widget class="QProgressBar" name="progressBar_2">
+                <widget class="QProgressBar" name="BoldScoreBar">
                  <property name="maximum">
                   <number>10</number>
                  </property>
@@ -221,7 +356,7 @@
                   <number>0</number>
                  </property>
                  <property name="format">
-                  <string>%p</string>
+                  <string>%v</string>
                  </property>
                 </widget>
                </item>
@@ -233,7 +368,7 @@
                 </widget>
                </item>
                <item row="2" column="1">
-                <widget class="QProgressBar" name="progressBar_3">
+                <widget class="QProgressBar" name="ItalicScoreBar">
                  <property name="maximum">
                   <number>10</number>
                  </property>
@@ -241,7 +376,7 @@
                   <number>0</number>
                  </property>
                  <property name="format">
-                  <string>%p</string>
+                  <string>%v</string>
                  </property>
                 </widget>
                </item>
@@ -253,7 +388,7 @@
                 </widget>
                </item>
                <item row="3" column="1">
-                <widget class="QProgressBar" name="progressBar_7">
+                <widget class="QProgressBar" name="DocScoreBar">
                  <property name="maximum">
                   <number>10</number>
                  </property>
@@ -261,7 +396,7 @@
                   <number>0</number>
                  </property>
                  <property name="format">
-                  <string>%p</string>
+                  <string>%v</string>
                  </property>
                 </widget>
                </item>
@@ -273,7 +408,7 @@
                 </widget>
                </item>
                <item row="4" column="1">
-                <widget class="QProgressBar" name="progressBar_8">
+                <widget class="QProgressBar" name="SizesScoreBar">
                  <property name="maximum">
                   <number>10</number>
                  </property>
@@ -281,12 +416,12 @@
                   <number>0</number>
                  </property>
                  <property name="format">
-                  <string>%p</string>
+                  <string>%v</string>
                  </property>
                 </widget>
                </item>
                <item row="5" column="1">
-                <widget class="QProgressBar" name="progressBar_4">
+                <widget class="QProgressBar" name="BasicScoreBar">
                  <property name="maximum">
                   <number>10</number>
                  </property>
@@ -294,7 +429,7 @@
                   <number>0</number>
                  </property>
                  <property name="format">
-                  <string>%p</string>
+                  <string>%v</string>
                  </property>
                 </widget>
                </item>
