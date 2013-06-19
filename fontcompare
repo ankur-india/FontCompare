@@ -1,10 +1,11 @@
 #! /usr/bin/python
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4.QtGui import QMessageBox
+from PyQt4.QtGui import QMainWindow
+from PyQt4.QtGui import QApplication
 import sys
 import time
-from fc.FontCompare import *
-from fc.GlyphConsistency import *
+from fc.FontCompare import FontCompare
+from fc.GlyphConsistency import GlyphConsistency
 
 # Import the interface class
 from fc import main_ui

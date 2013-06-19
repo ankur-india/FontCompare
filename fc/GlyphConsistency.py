@@ -1,4 +1,4 @@
-from fc.BitmapCompare import *
+from fc.BitmapCompare import BitmapCompare
 class GlyphConsistency:
     #computes the number of selfIntersects in the glyph is any across
     #all layers, it is a self consistency check
