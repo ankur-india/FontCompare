@@ -8,7 +8,7 @@ setup(name='Font Compare',
       author_email='mayank25080562@gmail.com',
       url='https://github.com/mjnovice/FontCompare',
       packages=['fc'],
-      scripts = ['/usr/bin/fontcompare', 'fontcompare'],
+      scripts = ['fontcompare'],
       install_requires=[
       "Pillow >=2.0",
       ],
