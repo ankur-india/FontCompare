@@ -20,9 +20,22 @@ How to Install and Run the application:
 
 A) Installation
     1. Change into the folder containing the source. 
+    2. As this is a fontforge utility so to be able to use it you need to
+		install the fontforge bindings for python onto your system.
+		
+		Run the required command on the terminal as given below
+		
+		For Debian based Linux distros:
+
+			sudo apt-get install python-fontforge
+		
+		For Redhat based Linux distros:
+
+			yum install fontforge-python
+
     2. Run "sudo python setup.py install" from the shell prompt, supply the 
         password if prompted for.
 
 B) Running
     From the shell prompt, type in "./fontcompare" and you would be able to
-    run and use the application.
+    run and use the application. 

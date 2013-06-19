@@ -1,0 +1,109 @@
+#!/usr/bin/python
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+import sys
+import time
+from fc.FontCompare import *
+# Import the interface class
+from fc import main_ui
+ 
+class MainApp(QMainWindow, main_ui.Ui_MainWindow):
+
+    Testfilepath = ""
+    Standardfilepath = ""
+    def __init__(self, parent=None):
+        super(MainApp, self).__init__(parent)#?????????????
+        # This is because Python does not automatically
+        # call the parent's constructor.
+        self.setupUi(self)
+        self.connectActions()
+ 
+    def connectActions(self):
+        self.BeginTestButton.clicked.connect(self.BeginTest)
+        self.loadTestpushButton.clicked.connect(self.OpenTestFile)
+        self.loadStandardpushButton.clicked.connect(self.OpenStandardFile)
+        self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
+        self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
+
+    def BeginTest(self):
+        if self.StandardCheckBox.isChecked():
+            self.TestFromStandards(1)
+        else:
+            self.TestFromFont()
+
+
+    def OpenTestFile(self):
+        filename = QFileDialog.getOpenFileName(self, 'Test File')
+        if fontforge.open(filename):
+            QMessageBox.about(self, "Success", "The file was loaded successfully!")
+            self.Testfilepath = filename
+            return
+        else:
+            QMessageBox.about(self, "Error", "The file could not be loaded!\n Please try again")
+
+    def OpenStandardFile(self):
+        filename = QFileDialog.getOpenFileName(self, 'Standard File')
+        if fontforge.open(filename):
+            QMessageBox.about(self, "Success", "The file was loaded successfully!")
+            self.Standardfilepath = filename
+            return
+        else:
+            QMessageBox.about(self, "Error", "The file could not be loaded!\n Please try again")
+
+    def ClearMessage(self):
+        self.MessageBox.setText("")
+
+    def SaveMessage(self):
+        content = self.MessageBox.toPlainText()
+        savefilename = QFileDialog.getSaveFileName(self, 'Save File')
+        myfile=open(savefilename,'w')
+        myfile.write(content)
+        myfile.close()
+
+    def TestFromStandards(self,choice):
+        self.PrintMessage("under construction")
+
+    def TestFromFont(self):
+        start = time.clock()
+        if not self.Testfilepath or not self.Standardfilepath:
+            QMessageBox.about(self, "Warning!","Please load standard or test file")
+        fontA = fontforge.open(self.Testfilepath)
+        fontB = fontforge.open(self.Standardfilepath)
+        fc=FontCompare()
+        final=0#0x901,0x970)
+        scores = fc.font_compare(fontA,fontB,self.GetScript())
+        self.PrintMessage(str(scores))
+        total=len(scores)
+        for gtuple in scores:
+            final+=gtuple[1]
+        if final:
+            final = (final/float(total))/10
+        else:
+            final = 0
+        self.UpdateScoreBar(final)
+        elapsed = (time.clock() - start)    
+        msg = "The total score was "+str(final) 
+        msg = msg + "The execution time was "+str(elapsed)
+        self.PrintMessage(msg)
+
+    def UpdateScoreBar(self,score):
+        self.NormalScoreBar.setValue(score)
+
+    def GetScript(self):
+        return (0x901,0x970)#self.LanguageBox.currentIndex()
+
+    def GetFontFilePaths(self):
+        print "under construction"
+
+    def PrintMessage(self,message):
+        self.MessageBox.append(message)
+
+
+    def main(self):
+        self.show()
+
+if __name__=='__main__':
+    app = QApplication(sys.argv)
+    mainApp = MainApp()
+    mainApp.main()
+    app.exec_()

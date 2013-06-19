@@ -1,0 +1,14 @@
+fontcompare
+setup.py
+/usr/bin/fontcompare
+Font_Compare.egg-info/PKG-INFO
+Font_Compare.egg-info/SOURCES.txt
+Font_Compare.egg-info/dependency_links.txt
+Font_Compare.egg-info/requires.txt
+Font_Compare.egg-info/top_level.txt
+fc/BitmapCompare.py
+fc/FontCompare.py
+fc/GlyphCompare.py
+fc/GlyphConsistency.py
+fc/__init__.py
+fc/main_ui.py
