@@ -37,20 +37,24 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
     def OpenTestFile(self):
         filename = QFileDialog.getOpenFileName(self, 'Test File')
         if fontforge.open(filename):
-            QMessageBox.about(self, "Success", "The file was loaded successfully!")
+            QMessageBox.about(self, "Success", 
+            "The file was loaded successfully!")
             self.Testfilepath = filename
             return
         else:
-            QMessageBox.about(self, "Error", "The file could not be loaded!\n Please try again")
+            QMessageBox.about(self, 
+            "Error", "The file could not be loaded!\n Please try again")
 
     def OpenStandardFile(self):
         filename = QFileDialog.getOpenFileName(self, 'Standard File')
         if fontforge.open(filename):
-            QMessageBox.about(self, "Success", "The file was loaded successfully!")
+            QMessageBox.about(self, "Success", 
+            "The file was loaded successfully!")
             self.Standardfilepath = filename
             return
         else:
-            QMessageBox.about(self, "Error", "The file could not be loaded!\n Please try again")
+            QMessageBox.about(self, "Error", 
+            "The file could not be loaded!\n Please try again")
 
     def ClearMessage(self):
         self.MessageBox.setText("")
@@ -77,7 +81,8 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             final = (final/float(total))/10
         else:
             final = 0
-            self.PrintMessage("The test font has no glyphs for Selected Script Unicode characters")
+            self.PrintMessage
+            ("No glyphs for Selected Script Unicode characters")
 
         elapsed = (time.clock() - start)    
         self.PrintMessage("The total score was "+str(final))
@@ -86,7 +91,8 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
 
     def TestFromFont(self):
         if not self.Testfilepath or not self.Standardfilepath:
-            QMessageBox.about(self, "Warning!","Please load standard or test file")
+            QMessageBox.about(self, "Warning!",
+            "Please load standard or test file")
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
         fc=FontCompare()
@@ -113,15 +119,18 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
         #normal test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,12,1,"normal")
+        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,
+        12,1,"normal")
         score =  self.PrintGlyphrelatedScore(scores)
         self.NormalScoreBar.setValue(round(score))
         #bold test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,12,1,"bold")
+        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,
+        12,1,"bold")
         score = self.PrintGlyphrelatedScore(scores)
         self.BoldScoreBar.setValue(round(score))
         #italic test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,12,1,"italic")
+        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,
+        12,1,"italic")
         score = self.PrintGlyphrelatedScore(scores)
         self.ItalicScoreBar.setValue(round(score))
 

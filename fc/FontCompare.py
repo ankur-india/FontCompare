@@ -19,7 +19,8 @@ class FontCompare(object):
     xHeightScore = -1
     pureBitmapScore = -1
 
-    def font_facecompare(self, Testfont, Standardfont, glyphRange, resolution, ptsize, pixeldepth, gtype):
+    def font_facecompare(self, Testfont, Standardfont, glyphRange, 
+    resolution, ptsize, pixeldepth, gtype):
         if gtype is "italic":
             Testfont.selection.all()
             Standardfont.selection.all()
@@ -34,9 +35,13 @@ class FontCompare(object):
                     comparator.initialise(pixelsize,pixeldepth)
                     glyphname=Standardfont[unicode_value].glyphname
                     if gtype is "normal" or "italic":
-                        glyphscore=comparator.basicbitmapScore(Standardfont[unicode_value], Testfont[unicode_value])
+                        glyphscore=comparator.basicbitmapScore
+                        (Standardfont[unicode_value], 
+                        Testfont[unicode_value])
                     if gtype is "bold":
-                        glyphscore=comparator.boldbitmapScore(Standardfont[unicode_value], Testfont[unicode_value])
+                        glyphscore=comparator.boldbitmapScore
+                        (Standardfont[unicode_value], 
+                        Testfont[unicode_value])
                     scores.append((glyphname,round(glyphscore)))
         return scores
 
