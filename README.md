@@ -19,7 +19,9 @@ Melange URL: http://www.google-melange.com/gsoc/project/google/gsoc2013/mjnovice
 How to Install and Run the application: 
 
 A) Installation
+
     1. Change into the folder containing the source. 
+
     2. As this is a fontforge utility so to be able to use it you need to
 		install the fontforge bindings for python onto your system.
 		
@@ -33,7 +35,7 @@ A) Installation
 
 			yum install fontforge-python
 
-    2. Run "sudo python setup.py install" from the shell prompt, supply the 
+    3. Run "sudo python setup.py install" from the shell prompt, supply the 
         password if prompted for.
 
 B) Running
