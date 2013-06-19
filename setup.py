@@ -10,7 +10,6 @@ setup(name='Font Compare',
       packages=['fc'],
       scripts = ['/usr/bin/fontcompare', 'fontcompare'],
       install_requires=[
-      "python >= 2.7"
       "Pillow >=2.0",
       ],
     )
