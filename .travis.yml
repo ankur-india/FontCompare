@@ -7,5 +7,5 @@ python:
 virtualenv:
   system_site_packages: true
 before_install:
-  -sudo apt-get install python-fontforge
+  - sudo apt-get install python-fontforge
 install: sudo python setup.py -q install
