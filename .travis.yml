@@ -9,4 +9,6 @@ virtualenv:
 before_install:
   - sudo apt-get install python-fontforge
 install: true
-script: python setup.py install
+script:
+  - python setup.py install
+  - python /unittests/unittests.py
