@@ -51,23 +51,22 @@ class GlyphConsistency:
         set_basic_score = count/float(total*7)
         return set_basic_score*10
 
-        def glyph_round_consistency(self, font, range_tuple):
-            #script and rounding consistency
-            bitcomp = BitmapCompare()
-            set_round_score=0
-            total=0
-            net_score = list()
-            for i in range (range_tuple[0],range_tuple[1]):
-                if i in font:
-                    if font[i].script is script:
-                        set_script_score+=1
-                    font[i].export("before.bmp",50,1)
-                    font[i].round()
-                    font[i].export("after.bmp",50,1)
-                    score =  bitcomp.basicCompare("before.bmp","after.bmp")
-                    if score is 100:
-                        set_round_score+=1
-                    total+=1
-            set_round_score = set_round_score/float(total)
-            return set_round_score
+    def glyph_round_consistency(self, font, range_tuple):
+        #script and rounding consistency
+        bitcomp = BitmapCompare()
+        set_round_score=0
+        total=0
+        net_score = list()
+        for i in range (range_tuple[0],range_tuple[1]):
+            if i in font:
+                font[i].export("/var/tmp/before.bmp",50,1)
+                font[i].round()
+                font[i].export("/var/tmp/after.bmp",50,1)
+                score =  bitcomp.basicCompare("/var/tmp/before.bmp",
+                "/var/tmp/after.bmp")
+                if score is 100:
+                    set_round_score+=1
+                total+=1
+        set_round_score = set_round_score/float(total)
+        return set_round_score
 

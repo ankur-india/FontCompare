@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/fontCompare.ui'
 #
-# Created: Fri Jun 14 14:18:32 2013
+# Created: Thu Jun 20 13:37:50 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -85,6 +85,14 @@ class Ui_MainWindow(object):
         self.BasicConsistencyScoreBar.setProperty("value", 0)
         self.BasicConsistencyScoreBar.setObjectName(_fromUtf8("BasicConsistencyScoreBar"))
         self.formLayout_3.setWidget(4, QtGui.QFormLayout.FieldRole, self.BasicConsistencyScoreBar)
+        self.scriptRoundingLabel = QtGui.QLabel(self.layoutWidget_2)
+        self.scriptRoundingLabel.setObjectName(_fromUtf8("scriptRoundingLabel"))
+        self.formLayout_3.setWidget(5, QtGui.QFormLayout.LabelRole, self.scriptRoundingLabel)
+        self.RoundingScoreBar = QtGui.QProgressBar(self.layoutWidget_2)
+        self.RoundingScoreBar.setMaximum(10)
+        self.RoundingScoreBar.setProperty("value", 0)
+        self.RoundingScoreBar.setObjectName(_fromUtf8("RoundingScoreBar"))
+        self.formLayout_3.setWidget(5, QtGui.QFormLayout.FieldRole, self.RoundingScoreBar)
         self.horizontalLayout_3.addWidget(self.groupBox_7)
         self.groupBox_6 = QtGui.QGroupBox(self.horizontalLayoutWidget_3)
         self.groupBox_6.setObjectName(_fromUtf8("groupBox_6"))
@@ -314,6 +322,8 @@ class Ui_MainWindow(object):
         self.MarkScoreBar.setFormat(QtGui.QApplication.translate("MainWindow", "%v", None, QtGui.QApplication.UnicodeUTF8))
         self.label_22.setText(QtGui.QApplication.translate("MainWindow", "Basic Test", None, QtGui.QApplication.UnicodeUTF8))
         self.BasicConsistencyScoreBar.setFormat(QtGui.QApplication.translate("MainWindow", "%v", None, QtGui.QApplication.UnicodeUTF8))
+        self.scriptRoundingLabel.setText(QtGui.QApplication.translate("MainWindow", "SRounding", None, QtGui.QApplication.UnicodeUTF8))
+        self.RoundingScoreBar.setFormat(QtGui.QApplication.translate("MainWindow", "%v", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_6.setTitle(QtGui.QApplication.translate("MainWindow", "Readability and Print Proof", None, QtGui.QApplication.UnicodeUTF8))
         self.label_12.setText(QtGui.QApplication.translate("MainWindow", "High Resolution", None, QtGui.QApplication.UnicodeUTF8))
         self.progressBar_9.setFormat(QtGui.QApplication.translate("MainWindow", "%p", None, QtGui.QApplication.UnicodeUTF8))
