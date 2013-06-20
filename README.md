@@ -39,5 +39,5 @@ A) Installation
         password if prompted for.
 
 B) Running
-    From the shell prompt, type in "./fontcompare" and you would be able to
+    From the shell prompt, type in "fontcompare" and you would be able to
     run and use the application. 
