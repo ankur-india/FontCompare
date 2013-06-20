@@ -62,11 +62,11 @@ class GlyphConsistency:
                 font[i].export("/var/tmp/before.bmp",50,1)
                 font[i].round()
                 font[i].export("/var/tmp/after.bmp",50,1)
-                score =  bitcomp.basicCompare("/var/tmp/before.bmp",
+                score =  bitcomp.basicCompare("/var/tmp/before.bmp", \
                 "/var/tmp/after.bmp")
-                if score is 100:
+                print score
+                if score == 100.0:
                     set_round_score+=1
                 total+=1
-        set_round_score = set_round_score/float(total)
-        return set_round_score
+        return (set_round_score/float(total))*10
 
