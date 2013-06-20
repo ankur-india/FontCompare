@@ -93,7 +93,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
 
     def TestFromFont(self):
         if not self.Testfilepath or not self.Standardfilepath:
-            QMessageBox.about(self, "Warning!",
+            QMessageBox.about(self, "Warning!", \
             "Please load standard or test file")
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
@@ -121,17 +121,17 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
         #normal test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,
+        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
         12,1,"normal")
         score =  self.PrintGlyphrelatedScore(scores)
         self.NormalScoreBar.setValue(round(score))
         #bold test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,
+        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
         12,1,"bold")
         score = self.PrintGlyphrelatedScore(scores)
         self.BoldScoreBar.setValue(round(score))
         #italic test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600,
+        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
         12,1,"italic")
         score = self.PrintGlyphrelatedScore(scores)
         self.ItalicScoreBar.setValue(round(score))

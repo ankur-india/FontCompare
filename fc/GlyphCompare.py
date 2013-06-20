@@ -14,9 +14,9 @@ class GlyphCompare(object):
 
     def basicbitmapScore(self,Testglyph,Standardglyph):
         Testglyph.export("/var/tmp/test.bmp",self.Pixels,self.Pixeldepth)
-        Standardglyph.export("/var/tmp/standard.bmp",self.Pixels,
+        Standardglyph.export("/var/tmp/standard.bmp",self.Pixels, \
         self.Pixeldepth)
-        return self.bm.basicCompare("/var/tmp/test.bmp",
+        return self.bm.basicCompare("/var/tmp/test.bmp", \
         "/var/tmp/standard.bmp")
 
     def bearingScore(self,Testglyph,Standardglyph):
