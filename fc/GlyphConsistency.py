@@ -9,13 +9,10 @@ class GlyphConsistency:
         else:
             scoreFactor = 0
         #no counter intersection
-        count=0
         score=0
-        for layer in glyph.layers:
-            if layer.selfIntersects():
-                score+=1
-            count+=1
-        return (score/count)*scoreFactor
+        if glyph.layers[1].selfIntersects():
+            score=10
+        return score*scoreFactor
 
     def glyph_basicset_consistency(self, font, range_tuple):
         total = 0
@@ -64,7 +61,6 @@ class GlyphConsistency:
                 font[i].export("/var/tmp/after.bmp",50,1)
                 score =  bitcomp.basicCompare("/var/tmp/before.bmp", \
                 "/var/tmp/after.bmp")
-                print score
                 if score == 100.0:
                     set_round_score+=1
                 total+=1
