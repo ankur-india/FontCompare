@@ -2,6 +2,8 @@
 from PyQt4.QtGui import QMessageBox
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtGui import QApplication
+from PyQt4.QtGui import QFileDialog
+import fontforge
 import sys
 import time
 from fc.FontCompare import FontCompare
