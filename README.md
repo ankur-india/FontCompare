@@ -41,3 +41,21 @@ A) Installation
 B) Running
     From the shell prompt, type in "fontcompare" and you would be able to
     run and use the application. 
+
+C) How to Use:
+    The very basic feature of Font Compare is to compare two fonts based 
+    on their glyphs, bearing, size and many other factors.
+    
+    Basic Usage Steps:
+    i) Click on Load Test font button , which would load the font to be
+       tested.
+    
+    ii) Click on Load Standard font Button, which would load the standard
+        font against which the font would be tested.
+    
+    iii) Now click on the Execute button to run the various tests.
+    
+    You can see that the detailed glyph wise test results can be viewed 
+    in the lower right corner, whereas categorised scored based on the
+    degree of similarity can be seen graphically in the upper part of the 
+    GUI.
