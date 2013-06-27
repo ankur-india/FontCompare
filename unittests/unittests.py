@@ -25,6 +25,12 @@ class Basictests(unittest.TestCase):
 
     def testFontCompare(self):
         cm = FontCompare()
+        basic = cm.font_basiccompare(testfont,testfont)
+        bastest=1
+        for tup in basic:
+            if tup[1]!=10:
+                bastest=0
+        self.failUnless(bastest)
         bold = cm.font_facecompare(testfont,testfont,(0x901,0x970),\
         600,12,1,"bold") 
         italic = cm.font_facecompare(testfont,testfont,(0x901,0x970),\

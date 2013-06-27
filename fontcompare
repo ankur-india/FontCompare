@@ -99,7 +99,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         fontB = fontforge.open(self.Standardfilepath)
         fc=FontCompare()
         gc=GlyphConsistency()
-        #consistency test
+    #consistency test
         #numerals
         score = gc.glyph_basicset_consistency(fontA, (0x960,0x96f))
         self.PrintMessage("Numeral Consistency Score is "+str(score))
@@ -120,6 +120,12 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score = gc.glyph_round_consistency(fontA, self.GetScript())
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
+    #font main tests
+        #basic properties
+        scores = fc.font_basiccompare(fontA,fontB)
+        for tup in scores:
+            self.PrintMessage(tup[0]+str(tup[1]))
+        self.BasicScoreBar.setValue(scores[len(scores)-1][1])
         #normal test
         scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
         12,1,"normal")
