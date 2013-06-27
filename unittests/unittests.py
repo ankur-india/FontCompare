@@ -4,7 +4,7 @@ from fc.BitmapCompare import BitmapCompare
 from fc.GlyphConsistency import GlyphConsistency
 import unittest
 import fontforge
-testfont = fontforge.open("lohit.ttf")
+testfont = fontforge.open("unittests/lohit.ttf")
 class Basictests(unittest.TestCase):
     def testGlyphCompare(self):
         cm = GlyphCompare()

@@ -11,4 +11,4 @@ before_install:
 install: true
 script:
   - python setup.py install
-  - cd unittests && python unittests.py
+  - python unittests/unittests.py
