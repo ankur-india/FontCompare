@@ -100,6 +100,11 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         fc=FontCompare()
         gc=GlyphConsistency()
     #consistency test
+        #basic
+        score = gc.glyph_basicConsistency(fontA,self.GetScript())
+        for tup in score:
+            self.PrintMessage(tup[0]+str(tup[1]))
+        self.BasicConsistencyScoreBar.setValue(score[len(score)-1][1])
         #numerals
         score = gc.glyph_basicset_consistency(fontA, (0x960,0x96f))
         self.PrintMessage("Numeral Consistency Score is "+str(score))

@@ -2,17 +2,24 @@ from fc.BitmapCompare import BitmapCompare
 class GlyphConsistency:
     #computes the number of selfIntersects in the glyph is any across
     #all layers, it is a self consistency check
-    def glyph_basicConsistency(self, glyph):
-        #worth outputting
-        if glyph.isWorthOutputting():
-            scoreFactor = 1
-        else:
-            scoreFactor = 0
-        #no counter intersection
-        score=0
-        if glyph.layers[1].selfIntersects():
-            score=10
-        return score*scoreFactor
+    def glyph_basicConsistency(self, font, range_tuple):
+        scores = list()
+        total = 0
+        for i in range (range_tuple[0],range_tuple[1]):
+            if i in font:
+                #worth outputting
+                if font[i].isWorthOutputting():
+                    scoreFactor = 1
+                else:
+                    scoreFactor = 0
+                #no counter intersection
+                score=10
+                if font[i].layers[1].selfIntersects():
+                    score=0
+                total+=score
+                scores.append((font[i].glyphname,score*scoreFactor))
+        scores.append(("Basic Consistency Score: ",total/len(scores)))
+        return scores
 
     def glyph_basicset_consistency(self, font, range_tuple):
         total = 0
