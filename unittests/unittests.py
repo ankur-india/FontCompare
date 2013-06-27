@@ -65,14 +65,14 @@ class Basictests(unittest.TestCase):
 
     def testGlyphConsistency(self):
         cm = GlyphConsistency()
-        test1 = cm.glyph_basicConsistency(testfont,([0x930],[0x930]))
+        test1 = cm.glyph_basicConsistency(testfont,(0x930,0x931))
         test2 = cm.glyph_basicset_consistency(testfont,(0x901,0x970))
         test3 = cm.glyph_round_consistency(testfont,(0x901,0x970))
         test = (0 <= test1[0][1] <= 10)
         self.failUnless(test)
-        test1 = (0 <= test1 <= 10)
+        test2 = (0 <= test2 <= 10)
         self.failUnless(test2)
-        test1 = (0 <= test1 <= 10)
+        test = (0 <= test3 <= 10)
         self.failUnless(test3)
 
 def main():
