@@ -65,13 +65,18 @@ class GlyphConsistency:
         net_score = list()
         for i in range (range_tuple[0],range_tuple[1]):
             if i in font:
-                font[i].export("/var/tmp/before.bmp",50,1)
-                font[i].round()
-                font[i].export("/var/tmp/after.bmp",50,1)
-                score =  bitcomp.basicCompare("/var/tmp/before.bmp", \
-                "/var/tmp/after.bmp")
-                if score == 100.0:
-                    set_round_score+=1
+                score =  self.glyph_round_compare(font[i])
+                set_round_score+=score
                 total+=1
         return (set_round_score/float(total))*10
 
+    def glyph_round_compare(self,glyph):
+        glyph.export("/var/tmp/before.bmp",50,1)
+        glyph.round()
+        glyph.export("/var/tmp/after.bmp",50,1)
+        score =(bitcomp.basicCompare("/var/tmp/before.bmp", \
+        "/var/tmp/after.bmp"))
+        if score == 100.0:
+            return 1
+        else:
+            return 0

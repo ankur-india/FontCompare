@@ -1,1 +1,1 @@
-__all__ = ["FontCompare", "GlyhCompare","GlyphConsistency", "BitmapHandler","main_ui"]
+__all__ = ["FontCompare", "GlyhCompare","GlyphConsistency", "BitmapHandler","main_ui","mockify"]
