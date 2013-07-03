@@ -38,11 +38,11 @@ class GlyphConsistency:
                 if not font[i].boundingBox()[0] in xmin_cords:
                     xmin_cords.append(font[i].boundingBox()[0])
                 if not font[i].boundingBox()[1] in ymin_cords:
-                    xmin_cords.append(font[i].boundingBox()[1])
+                    ymin_cords.append(font[i].boundingBox()[1])
                 if not font[i].boundingBox()[2] in xmax_cords:
-                    xmin_cords.append(font[i].boundingBox()[2])
-                if not font[i].boundingBox()[3] in xmin_cords:
-                    xmin_cords.append(font[i].boundingBox()[3])
+                    xmax_cords.append(font[i].boundingBox()[2])
+                if not font[i].boundingBox()[3] in ymax_cords:
+                    ymax_cords.append(font[i].boundingBox()[3])
                 if not font[i].left_side_bearing in lbearing:
                     rbearing.append(font[i].left_side_bearing)
                 if not font[i].right_side_bearing in rbearing:
