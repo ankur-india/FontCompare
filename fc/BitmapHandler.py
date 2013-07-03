@@ -1,5 +1,4 @@
 from PIL import Image
-
 class BitmapCompare:
     def basicCompare(self,testbmp,standardbmp):
         test = Image.open(testbmp)

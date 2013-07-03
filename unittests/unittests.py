@@ -1,6 +1,6 @@
 from fc.GlyphCompare import GlyphCompare
 from fc.FontCompare import FontCompare
-from fc.BitmapCompare import BitmapCompare
+from fc.BitmapHandler import BitmapCompare
 from fc.GlyphConsistency import GlyphConsistency
 import unittest
 import fontforge
