@@ -8,21 +8,25 @@ import sys
 import time
 from fc.FontCompare import FontCompare
 from fc.GlyphConsistency import GlyphConsistency
-
+from fc.mockify import MockFont
+import shelve
+import pkg_resources
+import shutil
+import os
+from os.path import basename
+from os.path import dirname
 # Import the interface class
 from fc import main_ui
- 
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
-
     Testfilepath = ""
-    Standardfilepath = ""
+    Standardfilepath = "workinprogress"
     def __init__(self, parent=None):
         super(MainApp, self).__init__(parent)#?????????????
         # This is because Python does not automatically
         # call the parent's constructor.
         self.setupUi(self)
         self.connectActions()
- 
+
     def connectActions(self):
         self.BeginTestButton.clicked.connect(self.BeginTest)
         self.loadTestpushButton.clicked.connect(self.OpenTestFile)
@@ -95,12 +99,20 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         if not self.Testfilepath or not self.Standardfilepath:
             QMessageBox.about(self, "Warning!", \
             "Please load standard or test file")
-        fontA = fontforge.open(self.Testfilepath)
-        fontB = fontforge.open(self.Standardfilepath)
+        thefile = pkg_resources.resource_filename("fc","data/myfirst.mcy")
+        shutil.copy(thefile,"/var/tmp/tmp.mcy")
+        print thefile
+        mock_font = shelve.open("/var/tmp/tmp.mcy")
+        #mock_font["font"] = MockFont(self.Standardfilepath,100,self.GetScript()) 
+        #mock_font.close()
+        #mock_font = shelve.open(thefile)
+        mockfont = mock_font["font"]
+        mock_font.close()
         fc=FontCompare()
         gc=GlyphConsistency()
     #consistency test
         #basic
+        fontA = fontforge.open(self.Testfilepath)
         score = gc.glyph_basicConsistency(fontA,self.GetScript())
         for tup in score:
             self.PrintMessage(tup[0]+str(tup[1]))
@@ -122,33 +134,36 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.PrintMessage("Vowel Consistency Score is "+str(score))
         self.VowelScoreBar.setValue(round(score))
         #rounding 
-        score = gc.glyph_round_consistency(fontA, self.GetScript())
+        score = gc.glyph_round_consistency(fontA, self.GetScript(),100)
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
     #font main tests
         #basic properties
-        scores = fc.font_basiccompare(fontA,fontB)
+        scores = fc.font_basiccompare(fontA,mockfont)
         for tup in scores:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicScoreBar.setValue(scores[len(scores)-1][1])
         #normal test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
+        scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
         12,1,"normal")
         score =  self.PrintGlyphrelatedScore(scores)
         self.NormalScoreBar.setValue(round(score))
+        fontA = fontforge.open(self.Testfilepath)
         #bold test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
+        scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
         12,1,"bold")
         score = self.PrintGlyphrelatedScore(scores)
         self.BoldScoreBar.setValue(round(score))
+        fontA = fontforge.open(self.Testfilepath)
         #italic test
-        scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
+        scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
         12,1,"italic")
         score = self.PrintGlyphrelatedScore(scores)
         self.ItalicScoreBar.setValue(round(score))
+        
 
     def GetScript(self):
-        return (0x901,0x970)#self.LanguageBox.currentIndex()
+        return (0x900,0x97f)#self.LanguageBox.currentIndex()
 
     def GetFontFilePaths(self):
         print "under construction"

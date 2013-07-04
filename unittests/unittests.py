@@ -22,7 +22,7 @@ class Basictests(unittest.TestCase):
         self.failUnless(test2)
         test3 = (0 <= test3 <= 100)
         self.failUnless(test3)
-
+"""
     def testFontCompare(self):
         cm = FontCompare()
         basic = cm.font_basiccompare(testfont,testfont)
@@ -62,7 +62,7 @@ class Basictests(unittest.TestCase):
         if total1 == total2 == total3:
             test = 1
         self.failUnless(test)
-
+"""
     def testGlyphConsistency(self):
         cm = GlyphConsistency()
         test1 = cm.glyph_basicConsistency(testfont,(0x930,0x931))

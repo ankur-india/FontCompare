@@ -1,25 +1,29 @@
 from fc.BitmapHandler import BitmapCompare
+bitcomp = BitmapCompare()
 class GlyphConsistency:
     #computes the number of selfIntersects in the glyph is any across
     #all layers, it is a self consistency check
-    def glyph_basicConsistency(self, font, range_tuple):
+    def glyph_basicConsistency(self, font, glyphrange):
         scores = list()
         total = 0
-        for i in range (range_tuple[0],range_tuple[1]):
+        for i in range (glyphrange[0],glyphrange[1]):
             #worth outputting
             try:
+                t=font[i]
+                print "ohhkkkkjhhgh"
                 if font[i].isWorthOutputting():
                     scoreFactor = 1
                 else:
                     scoreFactor = 0
+                score=10
+                if font[i].layers[1].selfIntersects():
+                    score=0
+                score = score * scoreFactor
             except:
-                scoreFactor = 0
+                score = 0
             #no counter intersection
-            score=10
-            if font[i].layers[1].selfIntersects():
-                score=0
             total+=score
-            scores.append((font[i].glyphname,score*scoreFactor))
+            scores.append((str(hex(i))+" ",score))
         scores.append(("Basic Consistency Score: ",total/len(scores)))
         return scores
 
@@ -57,25 +61,24 @@ class GlyphConsistency:
         set_basic_score = count/float(total*7)
         return set_basic_score*10
 
-    def glyph_round_consistency(self, font, range_tuple):
+    def glyph_round_consistency(self, font, glyphrange, pixelsize):
         #script and rounding consistency
-        bitcomp = BitmapCompare()
         set_round_score=0
         total=0
         net_score = list()
-        for i in range (range_tuple[0],range_tuple[1]):
+        for i in range (glyphrange[0],glyphrange[1]):
             if i in font:
-                score =  self.glyph_round_compare(font[i])
+                score =  self.glyph_round_compare(font[i],pixelsize)
                 set_round_score+=score
                 total+=1
         return (set_round_score/float(total))*10
 
-    def glyph_round_compare(self,glyph):
-        glyph.export("/var/tmp/before.bmp",50,1)
+    def glyph_round_compare(self,glyph,pixelsize):
+        glyph.export("/var/tmp/before.bmp",pixelsize,1)
         glyph.round()
-        glyph.export("/var/tmp/after.bmp",50,1)
+        glyph.export("/var/tmp/after.bmp",pixelsize,1)
         score =(bitcomp.basicCompare("/var/tmp/before.bmp", \
-        "/var/tmp/after.bmp"))
+        "/var/tmp/after.bmp",pixelsize,0,True))
         if score == 100.0:
             return 1
         else:

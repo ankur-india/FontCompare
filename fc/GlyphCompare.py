@@ -17,7 +17,7 @@ class GlyphCompare(object):
         Standardglyph.export("/var/tmp/standard.bmp",self.Pixels, \
         self.Pixeldepth)
         return self.bm.basicCompare("/var/tmp/test.bmp", \
-        "/var/tmp/standard.bmp")
+        "/var/tmp/standard.bmp",pixels,0)
 
     def bearingScore(self,Testglyph,Standardglyph):
         parlA = Standardglyph.left_side_bearing
@@ -42,5 +42,3 @@ class GlyphCompare(object):
         score1 = self.basicbitmapScore(squishTestglyph,squishStandardglyph)
         score2 = self.basicbitmapScore(Testglyph,Standardglyph)
         return float(score1+score2)/2
-    
-    #def strokebitmapcompare(self, glyph, linecap, linejoin, flags):

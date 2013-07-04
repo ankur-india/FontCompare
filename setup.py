@@ -8,6 +8,7 @@ setup(name='Font Compare',
       author_email='mayank25080562@gmail.com',
       url='https://github.com/mjnovice/FontCompare',
       packages=['fc'],
+      package_data={'fc': ['data/*.mcy','data/*.bmp']},
       scripts = ['fontcompare'],
       install_requires=[
       "Pillow >=2.0",
