@@ -4,7 +4,6 @@ from fc.BitmapHandler import BitmapCompare
 from fc.GlyphConsistency import GlyphConsistency
 import unittest
 import fontforge
-testfont = fontforge.open("unittests/lohit.ttf")
 class Basictests(unittest.TestCase):
     def testGlyphCompare(self):
         cm = GlyphCompare()
@@ -12,6 +11,7 @@ class Basictests(unittest.TestCase):
         test0 = 0
         if cm.Pixels == 10 and cm.Pixeldepth == 1:
             test0 = 1
+        testfont = fontforge.open("unittests/lohit.ttf")
         self.failUnless(test0)
         test1 = cm.basicbitmapScore(testfont[0x930],testfont[0x931])
         test2 = cm.bearingScore(testfont[0x930],testfont[0x931])
@@ -25,49 +25,52 @@ class Basictests(unittest.TestCase):
 
     def testFontCompare(self):
         cm = FontCompare()
+        testfont = fontforge.open("unittests/lohit.ttf")
         basic = cm.font_basiccompare(testfont,testfont)
         bastest=1
         for tup in basic:
             if tup[1]!=10:
                 bastest=0
         self.failUnless(bastest)
-        bold = cm.font_facecompare(testfont,testfont,(0x901,0x970),\
+        testfont = fontforge.open("unittests/lohit.ttf")
+        bold = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
         600,12,1,"bold") 
-        italic = cm.font_facecompare(testfont,testfont,(0x901,0x970),\
+        testfont = fontforge.open("unittests/lohit.ttf")
+        italic = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
         600,12,1,"italic") 
-        normal = cm.font_facecompare(testfont,testfont,(0x901,0x970),\
+        testfont = fontforge.open("unittests/lohit.ttf")
+        normal = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
         600,12,1,"normal") 
         test = 1
-        total1 = 0
+        print len(normal)
         for tup in bold:
-            if tup[1]!=100:
-                test1=0
-            total1+=1
-        self.failUnless(test)
-        total2 = 0
-        test = 1
-        for tup in italic:
-            if tup[1]!=100:
-                test=0
-            total2+=1
-        self.failUnless(test)
-        total3 = 0
-        test = 1
-        for tup in normal:
-            if tup[1]!=100:
-                test=0
-            total3+=1
+            if tup[1]==100 or tup[1]==0:
+                test1=1
+                break
         self.failUnless(test)
         test = 0
-        if total1 == total2 == total3:
+        for tup in italic:
+            if tup[1]==100 or tup[1]==0:
+                test=1
+                break
+        self.failUnless(test is 1)
+        test = 0
+        for tup in normal:
+            if tup[1]==100 or tup[1]==0: 
+                test=1
+                break
+        self.failUnless(test is 1)
+        test = 0
+        if len(normal) == len(bold) == len(italic):
             test = 1
-        self.failUnless(test)
+        self.failUnless(test is 1)
 
     def testGlyphConsistency(self):
         cm = GlyphConsistency()
+        testfont = fontforge.open("unittests/lohit.ttf")
         test1 = cm.glyph_basicConsistency(testfont,(0x930,0x931))
-        test2 = cm.glyph_basicset_consistency(testfont,(0x901,0x970))
-        test3 = cm.glyph_round_consistency(testfont,(0x901,0x970))
+        test2 = cm.glyph_basicset_consistency(testfont,(0x900,0x97f))
+        test3 = cm.glyph_round_consistency(testfont,(0x900,0x97f))
         test = (0 <= test1[0][1] <= 10)
         self.failUnless(test)
         test2 = (0 <= test2 <= 10)

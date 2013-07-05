@@ -3,6 +3,7 @@ from PyQt4.QtGui import QMessageBox
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtGui import QApplication
 from PyQt4.QtGui import QFileDialog
+from PyQt4.QtCore import *
 import fontforge
 import sys
 import time
@@ -14,8 +15,8 @@ from fc import main_ui
  
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
 
-    Testfilepath = ""
-    Standardfilepath = ""
+    Testfilepath = "unittests/lohit.ttf"
+    Standardfilepath = "unittests/lohit.ttf"
     def __init__(self, parent=None):
         super(MainApp, self).__init__(parent)#?????????????
         # This is because Python does not automatically
@@ -25,8 +26,10 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
  
     def connectActions(self):
         self.BeginTestButton.clicked.connect(self.BeginTest)
-        self.loadTestpushButton.clicked.connect(self.OpenTestFile)
-        self.loadStandardpushButton.clicked.connect(self.OpenStandardFile)
+        self.loadTestpushButton.clicked.connect(lambda: self.\
+        OpenFontFile("test"))
+        self.loadTestpushButton.clicked.connect(lambda: self.\
+        OpenFontFile("standard"))
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
@@ -36,27 +39,24 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         else:
             self.TestFromFont()
 
-    def OpenTestFile(self):
-        filename = QFileDialog.getOpenFileName(self, 'Test File')
-        if fontforge.open(filename):
-            QMessageBox.about(self, "Success", 
-            "The file was loaded successfully!")
-            self.Testfilepath = filename
-            return
-        else:
-            QMessageBox.about(self, 
-            "Error", "The file could not be loaded!\n Please try again")
+    def OpenFontFile(self,filetype):
+        flag=0
+        while flag == 0:
+            filename = QFileDialog.getOpenFileName(self, 'Font File')
+            try:
+                f=fontforge.open(filename)
+                QMessageBox.about(self, "Success", 
+                "The file was loaded successfully!")
+                flag=1
 
-    def OpenStandardFile(self):
-        filename = QFileDialog.getOpenFileName(self, 'Standard File')
-        if fontforge.open(filename):
-            QMessageBox.about(self, "Success", 
-            "The file was loaded successfully!")
+            except:
+                QMessageBox.about(self, 
+                "Error", "The file could not be loaded!\n \
+                Please try again")
+        if filetype == "standard":
             self.Standardfilepath = filename
-            return
         else:
-            QMessageBox.about(self, "Error", 
-            "The file could not be loaded!\n Please try again")
+            self.Testfilepath = filename
 
     def ClearMessage(self):
         self.MessageBox.setText("")
@@ -123,7 +123,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score = gc.glyph_round_consistency(fontA, self.GetScript())
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
-
     #font main tests
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
@@ -132,6 +131,8 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         for tup in scores:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicScoreBar.setValue(scores[len(scores)-1][1])
+        fontA = fontforge.open(self.Testfilepath)
+        fontB = fontforge.open(self.Standardfilepath)
         #normal test
         scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
         12,1,"normal")
@@ -155,7 +156,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.PrintMessage("The execution time was "+str(elapsed))
 
     def GetScript(self):
-        return (0x901,0x970)#self.LanguageBox.currentIndex()
+        return (0x900,0x97f)#self.LanguageBox.currentIndex()
 
     def GetFontFilePaths(self):
         print "under construction"

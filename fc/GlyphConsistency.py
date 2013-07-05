@@ -7,19 +7,19 @@ class GlyphConsistency:
         total = 0
         for i in range (range_tuple[0],range_tuple[1]):
             #worth outputting
-            try:
+            if i in font:
                 if font[i].isWorthOutputting():
                     scoreFactor = 1
                 else:
                     scoreFactor = 0
-            except:
-                scoreFactor = 0
             #no counter intersection
-            score=10
-            if font[i].layers[1].selfIntersects():
-                score=0
+                score=10*scoreFactor
+                if font[i].layers[1].selfIntersects():
+                    score=0
+            else:
+                score = 0
             total+=score
-            scores.append((font[i].glyphname,score*scoreFactor))
+            scores.append((str(hex(i))+" ",score))
         scores.append(("Basic Consistency Score: ",total/len(scores)))
         return scores
 
