@@ -40,6 +40,8 @@ class FontCompare(object):
         final.append(("x Height Score: ",score6))
         score=score1+score2+score3+score4+score5+score6;
         final.append(("Average Basic Score: ",score/6.0))
+	Testfont.close()
+	Standardfont.close()
         return final;
 
     def font_facecompare(self, Testfont, Standardfont, glyphRange, \
@@ -66,4 +68,7 @@ class FontCompare(object):
                         (Standardfont[unicode_value], \
                         Testfont[unicode_value])
                     scores.append((glyphname,round(glyphscore)))
-        return scores
+    Testfont.close()
+	Standardfont.close()
+	return scores
+	

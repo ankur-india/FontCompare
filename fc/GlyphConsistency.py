@@ -73,5 +73,6 @@ class GlyphConsistency:
                 if score == 100.0:
                     set_round_score+=1
                 total+=1
+        font.close()
         return (set_round_score/float(total))*10
 
