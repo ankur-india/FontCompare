@@ -29,8 +29,10 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
 
     def connectActions(self):
         self.BeginTestButton.clicked.connect(self.BeginTest)
-        self.loadTestpushButton.clicked.connect(self.OpenTestFile)
-        self.loadStandardpushButton.clicked.connect(self.OpenStandardFile)
+        self.loadTestpushButton.clicked.connect(lambda: self.\
+        OpenFontFile("test"))
+        self.loadTestpushButton.clicked.connect(lambda: self.\
+        OpenFontFile("standard"))
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
@@ -40,27 +42,24 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         else:
             self.TestFromFont()
 
-    def OpenTestFile(self):
-        filename = QFileDialog.getOpenFileName(self, 'Test File')
-        if fontforge.open(filename):
-            QMessageBox.about(self, "Success", 
-            "The file was loaded successfully!")
-            self.Testfilepath = filename
-            return
-        else:
-            QMessageBox.about(self, 
-            "Error", "The file could not be loaded!\n Please try again")
+    def OpenFontFile(self,filetype):
+        flag=0
+        while flag == 0:
+            filename = QFileDialog.getOpenFileName(self, 'Font File')
+            try:
+                f=fontforge.open(filename)
+                QMessageBox.about(self, "Success", 
+                "The file was loaded successfully!")
+                flag=1
 
-    def OpenStandardFile(self):
-        filename = QFileDialog.getOpenFileName(self, 'Standard File')
-        if fontforge.open(filename):
-            QMessageBox.about(self, "Success", 
-            "The file was loaded successfully!")
+            except:
+                QMessageBox.about(self, 
+                "Error", "The file could not be loaded!\n \
+                Please try again")
+        if filetype == "standard":
             self.Standardfilepath = filename
-            return
         else:
-            QMessageBox.about(self, "Error", 
-            "The file could not be loaded!\n Please try again")
+            self.Testfilepath = filename
 
     def ClearMessage(self):
         self.MessageBox.setText("")
@@ -101,11 +100,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             "Please load standard or test file")
         thefile = pkg_resources.resource_filename("fc","data/myfirst.mcy")
         shutil.copy(thefile,"/var/tmp/tmp.mcy")
-        print thefile
         mock_font = shelve.open("/var/tmp/tmp.mcy")
-        #mock_font["font"] = MockFont(self.Standardfilepath,100,self.GetScript()) 
-        #mock_font.close()
-        #mock_font = shelve.open(thefile)
         mockfont = mock_font["font"]
         mock_font.close()
         fc=FontCompare()
@@ -139,23 +134,27 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.RoundingScoreBar.setValue(round(score))
     #font main tests
         #basic properties
+        fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_basiccompare(fontA,mockfont)
         for tup in scores:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicScoreBar.setValue(scores[len(scores)-1][1])
         #normal test
+        fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
         12,1,"normal")
         score =  self.PrintGlyphrelatedScore(scores)
         self.NormalScoreBar.setValue(round(score))
         fontA = fontforge.open(self.Testfilepath)
         #bold test
+        fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
         12,1,"bold")
         score = self.PrintGlyphrelatedScore(scores)
         self.BoldScoreBar.setValue(round(score))
         fontA = fontforge.open(self.Testfilepath)
         #italic test
+        fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
         12,1,"italic")
         score = self.PrintGlyphrelatedScore(scores)

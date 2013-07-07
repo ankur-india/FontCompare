@@ -1,2 +1,2 @@
-include *.bmp
-include *.mcy
+include fc/data/*.bmp
+include fc/data/*.mcy

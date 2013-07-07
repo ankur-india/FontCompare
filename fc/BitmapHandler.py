@@ -32,7 +32,6 @@ class BitmapCompare:
                     count+=1
                 j=j+1
             i=i+1
-        print float(count)/(size*size)
         return float(count)/(size*size)
 
 

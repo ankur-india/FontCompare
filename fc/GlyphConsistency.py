@@ -10,7 +10,6 @@ class GlyphConsistency:
             #worth outputting
             try:
                 t=font[i]
-                print "ohhkkkkjhhgh"
                 if font[i].isWorthOutputting():
                     scoreFactor = 1
                 else:
@@ -71,6 +70,7 @@ class GlyphConsistency:
                 score =  self.glyph_round_compare(font[i],pixelsize)
                 set_round_score+=score
                 total+=1
+        font.close()
         return (set_round_score/float(total))*10
 
     def glyph_round_compare(self,glyph,pixelsize):
