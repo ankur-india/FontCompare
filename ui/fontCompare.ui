@@ -450,26 +450,13 @@
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>30</y>
+            <y>50</y>
             <width>181</width>
             <height>31</height>
            </rect>
           </property>
           <property name="text">
            <string>Load Test Font</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="loadStandardpushButton">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>100</y>
-            <width>131</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Load Standard Font</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
@@ -483,19 +470,6 @@
           </property>
           <property name="text">
            <string>Script:</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>80</y>
-            <width>201</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Compare with a standard font:</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_3">

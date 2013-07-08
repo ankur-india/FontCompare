@@ -31,8 +31,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.BeginTestButton.clicked.connect(self.BeginTest)
         self.loadTestpushButton.clicked.connect(lambda: self.\
         OpenFontFile("test"))
-        self.loadTestpushButton.clicked.connect(lambda: self.\
-        OpenFontFile("standard"))
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
@@ -160,7 +158,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score = self.PrintGlyphrelatedScore(scores)
         self.ItalicScoreBar.setValue(round(score))
         
-
     def GetScript(self):
         return (0x900,0x97f)#self.LanguageBox.currentIndex()
 
