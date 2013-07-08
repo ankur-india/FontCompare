@@ -7,5 +7,5 @@ before_install:
   - sudo apt-get install python-fontforge
 install: true
 script:
-  - python setup.py install
+  - python setup.py install --user
   - python unittests/unittests.py
