@@ -49,11 +49,8 @@ C) How to Use:
     Basic Usage Steps:
     i) Click on "Load Test font" button , which would load the font to be
        tested.
-    
-    ii) Click on "Load Standard font" button, which would load the standard
-        font against which the font would be tested.
-    
-    iii) Now click on the "Begin Test!" button to run the various tests.
+
+    ii) Now click on the "Begin Test!" button to run the various tests.
     
     You can see that the detailed glyph wise test results can be viewed 
     in the lower right corner, whereas categorised scored based on the
