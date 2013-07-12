@@ -319,7 +319,7 @@ class Ui_MainWindow(object):
         self.languageBox.setItemText(2, QtGui.QApplication.translate("MainWindow", "Bengali ", None, QtGui.QApplication.UnicodeUTF8))
         self.languageBox.setItemText(3, QtGui.QApplication.translate("MainWindow", "English", None, QtGui.QApplication.UnicodeUTF8))
         self.BeginTestButton.setText(QtGui.QApplication.translate("MainWindow", "Begin Test!", None, QtGui.QApplication.UnicodeUTF8))
-        self.loadTestpushButton.setText(QtGui.QApplication.translate("MainWindow", "Load Test Font", None, QtGui.QApplication.UnicodeUTF8))
+        self.loadTestpushButton.setText(QtGui.QApplication.translate("MainWindow", "Load TestFont", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("MainWindow", "Script:", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("MainWindow", "Purpose:", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox.setItemText(0, QtGui.QApplication.translate("MainWindow", "None", None, QtGui.QApplication.UnicodeUTF8))
