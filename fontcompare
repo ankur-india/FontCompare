@@ -41,9 +41,10 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
     def about(self):
         QMessageBox.about(self, "About", \
             " A tool for testing the aesthetic quality of fonts of Indic scripts")
+
     def BeginTest(self):
-        if self.ParametersCheckBox.isChecked():
-            self.TestFromStandards(1)
+        if self.Testfilepath == "":
+            QMessageBox.about(self, "Error", "No File was Loaded!")
         else:
             self.TestFromFont()
 
@@ -77,9 +78,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         myfile=open(savefilename,'w')
         myfile.write(content)
         myfile.close()
-
-    def TestFromStandards(self,choice):
-        self.PrintMessage("under construction")
 
     def PrintGlyphrelatedScore(self,scores):
         start = time.clock()

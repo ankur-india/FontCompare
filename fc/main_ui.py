@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/fontCompare.ui'
 #
-# Created: Thu Jul 18 10:20:53 2013
+# Created: Thu Jul 18 18:11:53 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -202,10 +202,10 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QtCore.QRect(250, 200, 54, 13))
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.label_3 = QtGui.QLabel(self.groupBox_3)
-        self.label_3.setGeometry(QtCore.QRect(20, 200, 51, 16))
+        self.label_3.setGeometry(QtCore.QRect(10, 200, 51, 16))
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.comboBox = QtGui.QComboBox(self.groupBox_3)
-        self.comboBox.setGeometry(QtCore.QRect(20, 220, 221, 22))
+        self.comboBox.setGeometry(QtCore.QRect(10, 220, 221, 22))
         self.comboBox.setEditable(True)
         self.comboBox.setObjectName(_fromUtf8("comboBox"))
         self.comboBox.addItem(_fromUtf8(""))
@@ -227,11 +227,8 @@ class Ui_MainWindow(object):
         self.comboBox.addItem(_fromUtf8(""))
         self.comboBox.addItem(_fromUtf8(""))
         self.label_17 = QtGui.QLabel(self.groupBox_3)
-        self.label_17.setGeometry(QtCore.QRect(10, 150, 211, 16))
+        self.label_17.setGeometry(QtCore.QRect(10, 180, 211, 16))
         self.label_17.setObjectName(_fromUtf8("label_17"))
-        self.ParametersCheckBox = QtGui.QCheckBox(self.groupBox_3)
-        self.ParametersCheckBox.setGeometry(QtCore.QRect(20, 170, 211, 21))
-        self.ParametersCheckBox.setObjectName(_fromUtf8("ParametersCheckBox"))
         self.horizontalLayout_2.addWidget(self.groupBox_3)
         self.groupBox_4 = QtGui.QGroupBox(self.verticalLayoutWidget)
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
@@ -340,8 +337,7 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(15, QtGui.QApplication.translate("MainWindow", "Display: Glow Signs", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox.setItemText(16, QtGui.QApplication.translate("MainWindow", "Display: LED Display", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox.setItemText(17, QtGui.QApplication.translate("MainWindow", "Display: TV/Mobiles Display", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "Compare with parameters:", None, QtGui.QApplication.UnicodeUTF8))
-        self.ParametersCheckBox.setText(QtGui.QApplication.translate("MainWindow", "Use Parameters for Test", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "Additional Meta Information", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_4.setTitle(QtGui.QApplication.translate("MainWindow", "Test Results", None, QtGui.QApplication.UnicodeUTF8))
         self.SaveMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Save To File", None, QtGui.QApplication.UnicodeUTF8))
         self.ClearMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Clear All", None, QtGui.QApplication.UnicodeUTF8))

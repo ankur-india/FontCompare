@@ -475,7 +475,7 @@
          <widget class="QLabel" name="label_3">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>10</x>
             <y>200</y>
             <width>51</width>
             <height>16</height>
@@ -488,7 +488,7 @@
          <widget class="QComboBox" name="comboBox">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>10</x>
             <y>220</y>
             <width>221</width>
             <height>22</height>
@@ -592,26 +592,13 @@
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>150</y>
+            <y>180</y>
             <width>211</width>
             <height>16</height>
            </rect>
           </property>
           <property name="text">
-           <string>Compare with parameters:</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="ParametersCheckBox">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>170</y>
-            <width>211</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Use Parameters for Test</string>
+           <string>Additional Meta Information</string>
           </property>
          </widget>
         </widget>
@@ -657,6 +644,10 @@
            </rect>
           </property>
          </widget>
+         <zorder>SaveMessageBoxButton</zorder>
+         <zorder>ClearMessageBoxButton</zorder>
+         <zorder>MessageBox</zorder>
+         <zorder>groupBox_3</zorder>
         </widget>
        </item>
       </layout>
