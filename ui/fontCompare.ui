@@ -456,7 +456,7 @@
            </rect>
           </property>
           <property name="text">
-           <string>Load Test Font</string>
+           <string>Load TestFont</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
@@ -677,32 +677,25 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="actionLoad_Font_File"/>
-    <addaction name="actionSave_Test_Results"/>
+    <addaction name="actionLoadTestFont"/>
+    <addaction name="actionSaveTestResults"/>
    </widget>
-   <widget class="QMenu" name="menuE_dit">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>E&amp;dit</string>
+     <string>Hel&amp;p</string>
     </property>
-    <addaction name="actionTest_Parameters"/>
-    <addaction name="actionManual_Testing"/>
-   </widget>
-   <widget class="QMenu" name="menuHe_lp">
-    <property name="title">
-     <string>He&amp;lp</string>
-    </property>
+    <addaction name="actionabout"/>
    </widget>
    <addaction name="menu_File"/>
-   <addaction name="menuE_dit"/>
-   <addaction name="menuHe_lp"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionLoad_Font_File">
+  <action name="actionLoadTestFont">
    <property name="text">
-    <string>Load Font File</string>
+    <string>Load TestFont</string>
    </property>
   </action>
-  <action name="actionSave_Test_Results">
+  <action name="actionSaveTestResults">
    <property name="text">
     <string>Save Test Results</string>
    </property>
@@ -715,6 +708,16 @@
   <action name="actionManual_Testing">
    <property name="text">
     <string>Manual Testing</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionabout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>

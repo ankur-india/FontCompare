@@ -31,9 +31,16 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.BeginTestButton.clicked.connect(self.BeginTest)
         self.loadTestpushButton.clicked.connect(lambda: self.\
         OpenFontFile("test"))
+        self.actionLoadTestFont.triggered.connect(lambda: self.\
+        OpenFontFile("test"))
+        self.actionSaveTestResults.triggered.connect(self.SaveMessage)
+        self.actionabout.triggered.connect(self.about)
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
+    def about(self):
+        QMessageBox.about(self, "About", \
+            " A tool for testing the aesthetic quality of fonts of Indic scripts")
     def BeginTest(self):
         if self.ParametersCheckBox.isChecked():
             self.TestFromStandards(1)
@@ -44,6 +51,8 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         flag=0
         while flag == 0:
             filename = QFileDialog.getOpenFileName(self, 'Font File')
+            if filename == "":
+                break
             try:
                 f=fontforge.open(filename)
                 QMessageBox.about(self, "Success", 

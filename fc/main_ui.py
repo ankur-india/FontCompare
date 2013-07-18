@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/fontCompare.ui'
 #
-# Created: Tue Jul  9 01:17:46 2013
+# Created: Thu Jul 18 10:20:53 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -252,29 +252,29 @@ class Ui_MainWindow(object):
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menu_File = QtGui.QMenu(self.menubar)
         self.menu_File.setObjectName(_fromUtf8("menu_File"))
-        self.menuE_dit = QtGui.QMenu(self.menubar)
-        self.menuE_dit.setObjectName(_fromUtf8("menuE_dit"))
-        self.menuHe_lp = QtGui.QMenu(self.menubar)
-        self.menuHe_lp.setObjectName(_fromUtf8("menuHe_lp"))
+        self.menuHelp = QtGui.QMenu(self.menubar)
+        self.menuHelp.setObjectName(_fromUtf8("menuHelp"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
-        self.actionLoad_Font_File = QtGui.QAction(MainWindow)
-        self.actionLoad_Font_File.setObjectName(_fromUtf8("actionLoad_Font_File"))
-        self.actionSave_Test_Results = QtGui.QAction(MainWindow)
-        self.actionSave_Test_Results.setObjectName(_fromUtf8("actionSave_Test_Results"))
+        self.actionLoadTestFont = QtGui.QAction(MainWindow)
+        self.actionLoadTestFont.setObjectName(_fromUtf8("actionLoadTestFont"))
+        self.actionSaveTestResults = QtGui.QAction(MainWindow)
+        self.actionSaveTestResults.setObjectName(_fromUtf8("actionSaveTestResults"))
         self.actionTest_Parameters = QtGui.QAction(MainWindow)
         self.actionTest_Parameters.setObjectName(_fromUtf8("actionTest_Parameters"))
         self.actionManual_Testing = QtGui.QAction(MainWindow)
         self.actionManual_Testing.setObjectName(_fromUtf8("actionManual_Testing"))
-        self.menu_File.addAction(self.actionLoad_Font_File)
-        self.menu_File.addAction(self.actionSave_Test_Results)
-        self.menuE_dit.addAction(self.actionTest_Parameters)
-        self.menuE_dit.addAction(self.actionManual_Testing)
+        self.actionAbout = QtGui.QAction(MainWindow)
+        self.actionAbout.setObjectName(_fromUtf8("actionAbout"))
+        self.actionabout = QtGui.QAction(MainWindow)
+        self.actionabout.setObjectName(_fromUtf8("actionabout"))
+        self.menu_File.addAction(self.actionLoadTestFont)
+        self.menu_File.addAction(self.actionSaveTestResults)
+        self.menuHelp.addAction(self.actionabout)
         self.menubar.addAction(self.menu_File.menuAction())
-        self.menubar.addAction(self.menuE_dit.menuAction())
-        self.menubar.addAction(self.menuHe_lp.menuAction())
+        self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -346,10 +346,11 @@ class Ui_MainWindow(object):
         self.SaveMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Save To File", None, QtGui.QApplication.UnicodeUTF8))
         self.ClearMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Clear All", None, QtGui.QApplication.UnicodeUTF8))
         self.menu_File.setTitle(QtGui.QApplication.translate("MainWindow", "&File", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuE_dit.setTitle(QtGui.QApplication.translate("MainWindow", "E&dit", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuHe_lp.setTitle(QtGui.QApplication.translate("MainWindow", "He&lp", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionLoad_Font_File.setText(QtGui.QApplication.translate("MainWindow", "Load Font File", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionSave_Test_Results.setText(QtGui.QApplication.translate("MainWindow", "Save Test Results", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuHelp.setTitle(QtGui.QApplication.translate("MainWindow", "Hel&p", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionLoadTestFont.setText(QtGui.QApplication.translate("MainWindow", "Load TestFont", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionSaveTestResults.setText(QtGui.QApplication.translate("MainWindow", "Save Test Results", None, QtGui.QApplication.UnicodeUTF8))
         self.actionTest_Parameters.setText(QtGui.QApplication.translate("MainWindow", "Test Parameters", None, QtGui.QApplication.UnicodeUTF8))
         self.actionManual_Testing.setText(QtGui.QApplication.translate("MainWindow", "Manual Testing", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionabout.setText(QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
 
