@@ -56,3 +56,12 @@ C) How to Use:
     in the lower right corner, whereas categorised scored based on the
     degree of similarity can be seen graphically in the upper part of the 
     GUI.
+
+    This branch of FontCompare compares the fonts, with a preset values
+    of standards and bitmaps, implemented using the concept of mockfonts.
+
+    NOTE:: Support for the user to be able to generate these mockfonts as 
+    standards at will, would be added soon. The reason I chose to create
+    mockfonts, is that it would prevent the need for the user to download 
+    standard fonts separately, as it was used to be done in the master 
+    branch, although it does occupy a bit more memory but works smoother.
