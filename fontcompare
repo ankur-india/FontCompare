@@ -111,39 +111,47 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         fc=FontCompare()
         gc=GlyphConsistency()
     #consistency test
+        self.PrintMessage("-------------------------------------------")
         #basic
         fontA = fontforge.open(self.Testfilepath)
         score = gc.glyph_basicConsistency(fontA,self.GetScript())
         for tup in score:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicConsistencyScoreBar.setValue(score[len(score)-1][1])
+        self.PrintMessage("-------------------------------------------")
         #numerals
         score = gc.glyph_basicset_consistency(fontA, (0x960,0x96f))
         self.PrintMessage("Numeral Consistency Score is "+str(score))
         self.NumeralScoreBar.setValue(round(score))
+        self.PrintMessage("-------------------------------------------")
         #consonants
         score = gc.glyph_basicset_consistency(fontA, (0x915,0x939))
         self.PrintMessage("Consonant Consistency Score is "+str(score))
         self.ConsonantScoreBar.setValue(round(score))
+        self.PrintMessage("-------------------------------------------")
         #marks
         score = gc.glyph_basicset_consistency(fontA, (0x958,0x95f))
         self.PrintMessage("Mark Consistency Score is "+str(score))
         self.MarkScoreBar.setValue(round(score))
+        self.PrintMessage("-------------------------------------------")
         #vowels
         score = gc.glyph_basicset_consistency(fontA, (0x904,0x914))
         self.PrintMessage("Vowel Consistency Score is "+str(score))
         self.VowelScoreBar.setValue(round(score))
+        self.PrintMessage("-------------------------------------------")
         #rounding 
         score = gc.glyph_round_consistency(fontA, self.GetScript(),100)
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
     #font main tests
+        self.PrintMessage("-------------------------------------------")
         #basic properties
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_basiccompare(fontA,mockfont)
         for tup in scores:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicScoreBar.setValue(scores[len(scores)-1][1])
+        self.PrintMessage("-------------------------------------------")
         #normal test
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
@@ -151,6 +159,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score =  self.PrintGlyphrelatedScore(scores)
         self.NormalScoreBar.setValue(round(score))
         fontA = fontforge.open(self.Testfilepath)
+        self.PrintMessage("-------------------------------------------")
         #bold test
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
@@ -158,6 +167,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score = self.PrintGlyphrelatedScore(scores)
         self.BoldScoreBar.setValue(round(score))
         fontA = fontforge.open(self.Testfilepath)
+        self.PrintMessage("-------------------------------------------")
         #italic test
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \

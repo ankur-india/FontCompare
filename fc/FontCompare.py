@@ -20,31 +20,31 @@ class FontCompare(object):
         final=list()
         mx=max(Testfont.ascent,mockfont.ascent)
         mn=min(Testfont.ascent,mockfont.ascent)
-        score1 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score1 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Ascent Score: ",score1))
         mx=max(Testfont.descent,mockfont.descent)
         mn=min(Testfont.descent,mockfont.descent)
-        score2 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score2 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Descent Score: ",score2))
         mx=max(Testfont.capHeight,mockfont.capHeight)
         mn=min(Testfont.capHeight,mockfont.capHeight)
-        score3 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score3 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Cap Height: ",score3))
         mx=max(Testfont.strokewidth,mockfont.strokewidth)
         mn=min(Testfont.strokewidth,mockfont.strokewidth)
-        score4 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score4 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Stroke Width Score: ",score4))
         mx=max(Testfont.upos,mockfont.upos)
         mn=min(Testfont.upos,mockfont.upos)
-        score5 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score5 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Underline Position Score: ",score5))
         mx=max(Testfont.uwidth,mockfont.uwidth)
         mn=min(Testfont.uwidth,mockfont.uwidth)
-        score5 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score5 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Underline Width Score: ",score5))
         mx=max(Testfont.xHeight,mockfont.xHeight)
         mn=min(Testfont.xHeight,mockfont.xHeight)
-        score6 = 1/(float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score6 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("x Height Score: ",score6))
         score=score1+score2+score3+score4+score5+score6;
         final.append(("Average Basic Score: ",score/6.0))
