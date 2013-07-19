@@ -62,16 +62,17 @@ class GlyphConsistency:
 
     def glyph_round_consistency(self, font, glyphrange, pixelsize):
         #script and rounding consistency
-        set_round_score=0
+        set_round_score=0.0
         total=0
         net_score = list()
         for i in range (glyphrange[0],glyphrange[1]):
             if i in font:
                 score =  self.glyph_round_compare(font[i],pixelsize)
+                print score
                 set_round_score+=score
                 total+=1
         font.close()
-        return (set_round_score/float(total))*10
+        return (set_round_score/total)*10
 
     def glyph_round_compare(self,glyph,pixelsize):
         glyph.export("/var/tmp/before.bmp",pixelsize,1)
@@ -79,7 +80,7 @@ class GlyphConsistency:
         glyph.export("/var/tmp/after.bmp",pixelsize,1)
         score =(bitcomp.basicCompare("/var/tmp/before.bmp", \
         "/var/tmp/after.bmp",pixelsize,0,True))
-        if score == 100.0:
+        if score == 1:
             return 1
         else:
             return 0
