@@ -22,6 +22,7 @@ class MockFont:
         self.uwidth = font.uwidth
         self.xHeight = font.xHeight
         self.capHeight = font.capHeight
+        self.weight = font.weight
         #normal 
         CreateSpriteSheet(pixelsize,font,glyphrange,"normal")
         font = fontforge.open(fontpath)
@@ -29,11 +30,19 @@ class MockFont:
         CreateSpriteSheet(pixelsize,font,glyphrange,"bold")
         font  = fontforge.open(fontpath)
         #italic
-        CreateSpriteSheet(pixelsize,font,glyphrange,"italic") 
+        CreateSpriteSheet(pixelsize,font,glyphrange,"italic")
+
+def main():
+    mock_font = shelve.open("data/mockfile.mcy")
+    mock_font["font"] = MockFont("lohit.ttf",50,(0x900,0x97f))
+    mock_font.close()
+
+if  __name__ =='__main__':main()
 """
-class Mockify:
-    def __init__(self,font,mockfilename,glyphrange,pixelsize):
-        mock_font = shelve.open("../data/"+mockfilename+".mcy")
-        mock_font["font"] = MockFont(font,pixelsize,glyphrange) 
-        mock_font.close()
+explanation--> 
+
+"lohit.ttf" is the path where the font file is stored
+so all you need to do is change the path of the font file, for making 
+your own mockfonts.
+
 """
