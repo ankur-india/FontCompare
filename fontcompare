@@ -103,7 +103,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         if not self.Testfilepath or not self.Standardfilepath:
             QMessageBox.about(self, "Warning!", \
             "Please load standard or test file")
-        thefile = pkg_resources.resource_filename("fc","data/myfirst.mcy")
+        thefile = pkg_resources.resource_filename("fc","data/mockfile.mcy")
         shutil.copy(thefile,"/var/tmp/tmp.mcy")
         mock_font = shelve.open("/var/tmp/tmp.mcy")
         mockfont = mock_font["font"]

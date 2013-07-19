@@ -1,13 +1,14 @@
 from fc.FontCompare import FontCompare
 from fc.BitmapHandler import BitmapCompare
 from fc.GlyphConsistency import GlyphConsistency
+from fc.mockify import MockFont
 import shelve
 import pkg_resources
 import shutil
 import unittest
 import fontforge
 #load the mockfonts for testing
-thefile = pkg_resources.resource_filename("fc","data/myfirst.mcy")
+thefile = pkg_resources.resource_filename("fc","data/mockfile.mcy")
 shutil.copy(thefile,"/var/tmp/tmp.mcy")
 mock_font = shelve.open("/var/tmp/tmp.mcy")
 mockfont = mock_font["font"]

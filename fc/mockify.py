@@ -34,7 +34,7 @@ class MockFont:
 
 def main():
     mock_font = shelve.open("data/mockfile.mcy")
-    mock_font["font"] = MockFont("lohit.ttf",50,(0x900,0x97f))
+    mock_font["font"] = MockFont("lohit.ttf",100,(0x900,0x97f))
     mock_font.close()
 
 if  __name__ =='__main__':main()
