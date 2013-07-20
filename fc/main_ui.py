@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/fontCompare.ui'
 #
-# Created: Sat Jul 20 13:43:52 2013
+# Created: Sun Jul 21 00:50:14 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -106,11 +106,11 @@ class Ui_MainWindow(object):
         self.label_12 = QtGui.QLabel(self.layoutWidget)
         self.label_12.setObjectName(_fromUtf8("label_12"))
         self.formLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole, self.label_12)
-        self.progressBar_9 = QtGui.QProgressBar(self.layoutWidget)
-        self.progressBar_9.setMaximum(10)
-        self.progressBar_9.setProperty("value", 0)
-        self.progressBar_9.setObjectName(_fromUtf8("progressBar_9"))
-        self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.progressBar_9)
+        self.highresScoreBar = QtGui.QProgressBar(self.layoutWidget)
+        self.highresScoreBar.setMaximum(10)
+        self.highresScoreBar.setProperty("value", 0)
+        self.highresScoreBar.setObjectName(_fromUtf8("highresScoreBar"))
+        self.formLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.highresScoreBar)
         self.label_13 = QtGui.QLabel(self.layoutWidget)
         self.label_13.setObjectName(_fromUtf8("label_13"))
         self.formLayout_2.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_13)
@@ -297,7 +297,7 @@ class Ui_MainWindow(object):
         self.RoundingScoreBar.setFormat(QtGui.QApplication.translate("MainWindow", "%v", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox_6.setTitle(QtGui.QApplication.translate("MainWindow", "Readability and Print Proof", None, QtGui.QApplication.UnicodeUTF8))
         self.label_12.setText(QtGui.QApplication.translate("MainWindow", "High Resolution", None, QtGui.QApplication.UnicodeUTF8))
-        self.progressBar_9.setFormat(QtGui.QApplication.translate("MainWindow", "%p", None, QtGui.QApplication.UnicodeUTF8))
+        self.highresScoreBar.setFormat(QtGui.QApplication.translate("MainWindow", "%v", None, QtGui.QApplication.UnicodeUTF8))
         self.label_13.setText(QtGui.QApplication.translate("MainWindow", "Low Resolution ", None, QtGui.QApplication.UnicodeUTF8))
         self.progressBar_10.setFormat(QtGui.QApplication.translate("MainWindow", "%p", None, QtGui.QApplication.UnicodeUTF8))
         self.label_14.setText(QtGui.QApplication.translate("MainWindow", "Low Light Read", None, QtGui.QApplication.UnicodeUTF8))

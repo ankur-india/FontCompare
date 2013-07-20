@@ -9,14 +9,16 @@ import sys
 import time
 from fc.FontCompare import FontCompare
 from fc.GlyphConsistency import GlyphConsistency
-
+from fc.DocCompare import DocCompare
+import pkg_resources
+import shutil
 # Import the interface class
 from fc import main_ui
  
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
 
-    Testfilepath = ""
-    Standardfilepath = ""
+    Testfilepath = "unittests/lohit.ttf"
+    Standardfilepath = "unittests/lohit.ttf"
     def __init__(self, parent=None):
         super(MainApp, self).__init__(parent)#?????????????
         # This is because Python does not automatically
@@ -28,7 +30,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.BeginTestButton.clicked.connect(self.BeginTest)
         self.loadTestpushButton.clicked.connect(lambda: self.\
         OpenFontFile("test"))
-        self.loadTestpushButton.clicked.connect(lambda: self.\
+        self.loadStandardpushButton.clicked.connect(lambda: self.\
         OpenFontFile("standard"))
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
@@ -44,6 +46,8 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         flag=0
         while flag == 0:
             filename = QFileDialog.getOpenFileName(self, 'Font File')
+            if filename == "":
+                break
             try:
                 f=fontforge.open(filename)
                 QMessageBox.about(self, "Success", 
@@ -97,28 +101,34 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         fc=FontCompare()
         gc=GlyphConsistency()
     #consistency test
+        self.PrintMessage("----------------------------------------")
         #basic
         start = time.clock()
         score = gc.glyph_basicConsistency(fontA,self.GetScript())
         for tup in score:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicConsistencyScoreBar.setValue(score[len(score)-1][1])
+        self.PrintMessage("----------------------------------------")
         #numerals
         score = gc.glyph_basicset_consistency(fontA, (0x960,0x96f))
         self.PrintMessage("Numeral Consistency Score is "+str(score))
         self.NumeralScoreBar.setValue(round(score))
+        self.PrintMessage("----------------------------------------")
         #consonants
         score = gc.glyph_basicset_consistency(fontA, (0x915,0x939))
         self.PrintMessage("Consonant Consistency Score is "+str(score))
         self.ConsonantScoreBar.setValue(round(score))
+        self.PrintMessage("----------------------------------------")
         #marks
         score = gc.glyph_basicset_consistency(fontA, (0x958,0x95f))
         self.PrintMessage("Mark Consistency Score is "+str(score))
         self.MarkScoreBar.setValue(round(score))
+        self.PrintMessage("----------------------------------------")
         #vowels
         score = gc.glyph_basicset_consistency(fontA, (0x904,0x914))
         self.PrintMessage("Vowel Consistency Score is "+str(score))
         self.VowelScoreBar.setValue(round(score))
+        self.PrintMessage("----------------------------------------")
         #rounding -->this is placed at last since it changes the font
         #and the font object is closed after this test
         score = gc.glyph_round_consistency(fontA, self.GetScript())
@@ -127,6 +137,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
     #font main tests
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
+        self.PrintMessage("----------------------------------------")
         #basic properties
         scores = fc.font_basiccompare(fontA,fontB)
         for tup in scores:
@@ -134,11 +145,13 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.BasicScoreBar.setValue(scores[len(scores)-1][1])
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
+        self.PrintMessage("----------------------------------------")
         #normal test
         scores = fc.font_facecompare(fontA,fontB,self.GetScript(),600, \
         12,1,"normal")
         score =  self.PrintGlyphrelatedScore(scores)
         self.NormalScoreBar.setValue(round(score))
+        self.PrintMessage("----------------------------------------")
         #bold test
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
@@ -146,6 +159,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         12,1,"bold")
         score = self.PrintGlyphrelatedScore(scores)
         self.BoldScoreBar.setValue(round(score))
+        self.PrintMessage("----------------------------------------")
         #italic test
         fontA = fontforge.open(self.Testfilepath)
         fontB = fontforge.open(self.Standardfilepath)
@@ -153,6 +167,18 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         12,1,"italic")
         score = self.PrintGlyphrelatedScore(scores)
         self.ItalicScoreBar.setValue(round(score))
+
+    #font advanced tests
+        #highres test
+        dc = DocCompare()
+        thefile = pkg_resources.resource_filename("fc","docs/doc.txt")
+        shutil.copy(thefile,"/var/tmp/doc.txt")
+        docfilepath="/var/tmp/doc.txt"
+        score = dc.basicCompare(self.Testfilepath,self.Standardfilepath,\
+        docfilepath,160)
+        self.PrintMessage("High Resolution Score: "+str(score))
+        self.highresScoreBar.setValue(round(score/10))
+
         elapsed = (time.clock() - start)    
         self.PrintMessage("The execution time was "+str(elapsed))
 
