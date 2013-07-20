@@ -15,8 +15,8 @@ from fc import main_ui
  
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
 
-    Testfilepath = "unittests/lohit.ttf"
-    Standardfilepath = "unittests/lohit.ttf"
+    Testfilepath = ""
+    Standardfilepath = ""
     def __init__(self, parent=None):
         super(MainApp, self).__init__(parent)#?????????????
         # This is because Python does not automatically
@@ -34,10 +34,11 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
     def BeginTest(self):
-        if self.ParametersCheckBox.isChecked():
-            self.TestFromStandards(1)
-        else:
+        if self.Testfilepath!="" and self.Standardfilepath!="":
             self.TestFromFont()
+        else:
+            QMessageBox.about(self, "Error", 
+                "Standard or Test Font missing!")
 
     def OpenFontFile(self,filetype):
         flag=0

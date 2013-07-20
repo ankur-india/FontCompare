@@ -12,34 +12,46 @@ class FontCompare(object):
         final=list()
         mx=max(Testfont.ascent,Standardfont.ascent)
         mn=min(Testfont.ascent,Standardfont.ascent)
-        score1 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score1 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Ascent Score: ",score1))
+
         mx=max(Testfont.descent,Standardfont.descent)
         mn=min(Testfont.descent,Standardfont.descent)
-        score2 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score2 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Descent Score: ",score2))
+
         mx=max(Testfont.capHeight,Standardfont.capHeight)
         mn=min(Testfont.capHeight,Standardfont.capHeight)
-        score3 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
-        final.append(("Descent Score: ",score3))
+        score3 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
+        final.append(("Cap Height: ",score3))
+
         mx=max(Testfont.strokewidth,Standardfont.strokewidth)
         mn=min(Testfont.strokewidth,Standardfont.strokewidth)
-        score4 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score4 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Stroke Width Score: ",score4))
+
         mx=max(Testfont.upos,Standardfont.upos)
         mn=min(Testfont.upos,Standardfont.upos)
-        score5 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
+        score5 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Underline Position Score: ",score5))
+
         mx=max(Testfont.uwidth,Standardfont.uwidth)
         mn=min(Testfont.uwidth,Standardfont.uwidth)
-        score5 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
-        final.append(("Underline Width Score: ",score5))
+        score6 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
+        final.append(("Underline Width Score: ",score6))
+
         mx=max(Testfont.xHeight,Standardfont.xHeight)
         mn=min(Testfont.xHeight,Standardfont.xHeight)
-        score6 = 1/(float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10
-        final.append(("x Height Score: ",score6))
-        score=score1+score2+score3+score4+score5+score6
-        final.append(("Average Basic Score: ",score/6.0))
+        score7 = int(1/(float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
+        final.append(("x Height Score: ",score7))
+        
+        test=Testfont.weight
+        standard=Standardfont.weight
+        score8 = 10 if test==standard else 0
+        final.append(("PostScript weight string",score8))
+
+        score=score1+score2+score3+score4+score5+score6+score7+score8
+        final.append(("Average Basic Score: ",score/8.0))
         Testfont.close()
         if Testfont != Standardfont:
             Standardfont.close()
