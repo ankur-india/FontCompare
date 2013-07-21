@@ -1,7 +1,7 @@
 from fc.BitmapHandler import CreateSpriteSheet
 import shelve
 import fontforge
-
+import os
 class MockFont:
     ascent=0
     descent=0
@@ -14,6 +14,7 @@ class MockFont:
     normalglyphfile = "data/masterspritenormal.bmp"
     boldglyphfile = "data/masterspritebold.bmp"
     italicglyphfile = "data/masterspriteitalic.bmp"
+    highresdocfile = "data/highres.png"
     def __init__(self,fontpath,pixelsize,glyphrange):
         font = fontforge.open(fontpath)
         self.ascent = font.ascent
@@ -31,17 +32,21 @@ class MockFont:
         font  = fontforge.open(fontpath)
         #italic
         CreateSpriteSheet(pixelsize,font,glyphrange,"italic")
+        #docfile,highres
+        bashcommand = "hb-view --output-format=\"png\" --output-file=\"data/highres.png\" --font-size=160 --text-file=\""
+        bashcommand+="docs/doc.txt\" \""+fontpath+"\""
+        os.system(str(bashcommand))
 
 def main():
     mock_font = shelve.open("data/mockfile.mcy")
-    mock_font["font"] = MockFont("lohit.ttf",100,(0x900,0x97f))
+    mock_font["font"] = MockFont("../unittests/lohit.ttf",100,(0x900,0x97f))
     mock_font.close()
 
 if  __name__ =='__main__':main()
 """
 explanation--> 
 
-"lohit.ttf" is the path where the font file is stored
+"../unittests/lohit.ttf" is the path where the font file is stored
 so all you need to do is change the path of the font file, for making 
 your own mockfonts.
 
