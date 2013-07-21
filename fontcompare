@@ -9,6 +9,7 @@ import time
 from fc.FontCompare import FontCompare
 from fc.GlyphConsistency import GlyphConsistency
 from fc.mockify import MockFont
+from fc.DocCompare import DocCompare
 import shelve
 import pkg_resources
 import shutil
@@ -174,6 +175,14 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         12,1,"italic")
         score = self.PrintGlyphrelatedScore(scores)
         self.ItalicScoreBar.setValue(round(score))
+        self.PrintMessage("-------------------------------------------")
+    #font advanced tests
+        #highres docfile
+        dc = DocCompare()
+        score = dc.basicCompare(self.Testfilepath,mockfont,160)
+        self.highresScoreBar.setValue(round(score/10))
+        self.PrintMessage("High Resolution Score: "+str(score/10))
+        
         
     def GetScript(self):
         return (0x900,0x97f)#self.LanguageBox.currentIndex()

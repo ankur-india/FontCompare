@@ -68,7 +68,9 @@ class Basictests(unittest.TestCase):
                 break
         self.failUnless(flag)
         self.failUnless(len(test1)==len(test2)==len(test3))
-
+"""
+pending unittests for DocCompare
+"""
 def main():
     unittest.main()
 
