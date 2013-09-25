@@ -15,23 +15,6 @@ mockfont = mock_font["font"]
 mock_font.close()
 
 class Basictests(unittest.TestCase):
-    def testGlyphCompare(self):
-        cm = GlyphCompare()
-        cm.initialise(10,1)
-        test0 = 0
-        if cm.Pixels == 10 and cm.Pixeldepth == 1:
-            test0 = 1
-        testfont = fontforge.open("unittests/lohit.ttf")
-        self.failUnless(test0)
-        test1 = cm.basicbitmapScore(testfont[0x930],testfont[0x931])
-        test2 = cm.bearingScore(testfont[0x930],testfont[0x931])
-        test3 = cm.boldbitmapScore(testfont[0x930],testfont[0x931])
-        test1 = (0 <= test1 <= 100)
-        self.failUnless(test1)
-        test2 = (0 <= test2 <= 10)
-        self.failUnless(test2)
-        test3 = (0 <= test3 <= 100)
-        self.failUnless(test3)
 
     def testFontCompare(self):
         cm = FontCompare()

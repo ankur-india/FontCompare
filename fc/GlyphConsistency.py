@@ -18,15 +18,11 @@ class GlyphConsistency:
 		    score=10
 		    if font[i].layers[1].selfIntersects():
 			score=0
-		    score = score * scoreFactor
+		    else:
+		        score = score * scoreFactor
             except:
                 score = 0
             #no counter intersection
-                score=10*scoreFactor
-                if font[i].layers[1].selfIntersects():
-                    score=0
-            else:
-                score = 0
             total+=score
             scores.append((str(hex(i))+" ",score))
         scores.append(("Basic Consistency Score: ",total/len(scores)))
