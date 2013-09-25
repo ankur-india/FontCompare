@@ -120,6 +120,7 @@ class FontCompare(object):
 
     def font_facecompare(self, Testfont, Standardfont, glyphRange, \
     resolution, ptsize, pixeldepth, fonttype):
+	spritepath = "/var/tmp/tmpn.bmp"
         if fonttype is "italic":
             Testfont.selection.all()
             Testfont = Testfont.italicize(-13)
