@@ -473,7 +473,6 @@
           </property>
           <property name="text">
            <string>Load Standard Font</string>
->>>>>>> cf0954c95baad4a87c7faa6f5a211f362523c54d
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
@@ -615,11 +614,7 @@
            </rect>
           </property>
           <property name="text">
-<<<<<<< HEAD
            <string>Additional Meta Information</string>
-=======
-           <string>Additional Meta Information: </string>
->>>>>>> cf0954c95baad4a87c7faa6f5a211f362523c54d
           </property>
          </widget>
         </widget>
