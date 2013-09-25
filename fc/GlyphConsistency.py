@@ -10,15 +10,15 @@ class GlyphConsistency:
             #worth outputting
             try:
                 t=font[i]
-            if i in font:
-                if font[i].isWorthOutputting():
-                    scoreFactor = 1
-                else:
-                    scoreFactor = 0
-                score=10
-                if font[i].layers[1].selfIntersects():
-                    score=0
-                score = score * scoreFactor
+		if i in font:
+		    if font[i].isWorthOutputting():
+			scoreFactor = 1
+		    else:
+			scoreFactor = 0
+		    score=10
+		    if font[i].layers[1].selfIntersects():
+			score=0
+		    score = score * scoreFactor
             except:
                 score = 0
             #no counter intersection
