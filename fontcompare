@@ -49,9 +49,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             QMessageBox.about(self, "Error", "No File was Loaded!")
         else:
             self.TestFromFont()
-        else:
-            QMessageBox.about(self, "Error", 
-                "Standard or Test Font missing!")
+
 
     def OpenFontFile(self,filetype):
         flag=0
