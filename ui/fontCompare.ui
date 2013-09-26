@@ -644,10 +644,6 @@
            </rect>
           </property>
          </widget>
-         <zorder>SaveMessageBoxButton</zorder>
-         <zorder>ClearMessageBoxButton</zorder>
-         <zorder>MessageBox</zorder>
-         <zorder>groupBox_3</zorder>
         </widget>
        </item>
       </layout>

@@ -150,7 +150,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.RoundingScoreBar.setValue(round(score))
     #font main tests
         self.PrintMessage("-------------------------------------------")
-
         #basic properties
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_basiccompare(fontA,mockfont)
@@ -187,7 +186,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score = dc.basicCompare(self.Testfilepath,mockfont,160)
         self.highresScoreBar.setValue(round(score/10))
         self.PrintMessage("High Resolution Score: "+str(score/10))
-        
     def GetScript(self):
         return (0x900,0x97f)#self.LanguageBox.currentIndex()
 
