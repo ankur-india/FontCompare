@@ -8,12 +8,17 @@ class GlyphConsistency:
         total = 0
         for i in range (glyphrange[0],glyphrange[1]):
             #worth outputting
+<<<<<<< HEAD
             try:
                 t=font[i]
+=======
+            if i in font:
+>>>>>>> 2466c64... simplified the code and fixed tests with erroneous results.
                 if font[i].isWorthOutputting():
                     scoreFactor = 1
                 else:
                     scoreFactor = 0
+<<<<<<< HEAD
                 score=10
                 if font[i].layers[1].selfIntersects():
                     score=0
@@ -21,6 +26,14 @@ class GlyphConsistency:
             except:
                 score = 0
             #no counter intersection
+=======
+            #no counter intersection
+                score=10*scoreFactor
+                if font[i].layers[1].selfIntersects():
+                    score=0
+            else:
+                score = 0
+>>>>>>> 2466c64... simplified the code and fixed tests with erroneous results.
             total+=score
             scores.append((str(hex(i))+" ",score))
         scores.append(("Basic Consistency Score: ",total/len(scores)))
