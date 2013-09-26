@@ -1,6 +1,6 @@
 """
 Contains methods for making comparisions using a host of tests.
-They are also for modifying a glyph by altering its 
+They are also for modifying a glyph by altering its
 serif, stroke , stem thickness, size, italic angle etc.
 and then later producing scores by doing bitmap comparision
 """
@@ -17,7 +17,8 @@ shutil.copy(thefile,"/var/tmp/tmpi.bmp")
 class FontCompare(object):
 
     def font_basiccompare(self, Testfont, mockfont):
-        final=list()        
+        final=list()
+        
         mx=max(Testfont.ascent,mockfont.ascent)
         mn=min(Testfont.ascent,mockfont.ascent)
         score1 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10

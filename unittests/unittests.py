@@ -29,46 +29,9 @@ class Basictests(unittest.TestCase):
         test3 = (0 <= test3 <= 10)
         self.failUnless(test3)
 
-    def testFontCompare(self):
-        cm = FontCompare()
-        testfont = fontforge.open("unittests/lohit.ttf")
-        test = cm.font_basiccompare(testfont,mockfont)
-        flag=1
-        for tup in test:
-            if not 0<=tup[1]<=10:
-                flag=0
-                break
-        self.failUnless(flag)
-        testfont = fontforge.open("unittests/lohit.ttf")
-        test1 = cm.font_facecompare(testfont,mockfont,(0x900,0x97f),600,\
-        12,1,"normal")
-        flag = 1
-        for tup in test1:
-            if not 0<=tup[1]<=100:
-                flag=0
-                break
-        self.failUnless(flag)
-        testfont = fontforge.open("unittests/lohit.ttf")
-        test2 = cm.font_facecompare(testfont,mockfont,(0x900,0x97f),600,\
-        12,1,"bold")
-        flag = 1
-        for tup in test2:
-            if not 0<=tup[1]<=100:
-                flag=0
-                break
-        self.failUnless(flag)
-        testfont = fontforge.open("unittests/lohit.ttf")
-        test3 = cm.font_facecompare(testfont,mockfont,(0x900,0x97f),600,\
-        12,1,"italic")
-        flag = 1
-        for tup in test3:
-            if not 0<=tup[1]<=100:
-                flag=0
-                break
-        self.failUnless(flag)
-        self.failUnless(len(test1)==len(test2)==len(test3))
+
 """
-pending unittests for DocCompare
+unittests for DocCompare not required.
 """
 def main():
     unittest.main()
