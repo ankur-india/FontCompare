@@ -456,7 +456,23 @@
            </rect>
           </property>
           <property name="text">
+<<<<<<< HEAD
            <string>Load TestFont</string>
+=======
+           <string>Load Test Font</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="loadStandardpushButton">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>181</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Load Standard Font</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">

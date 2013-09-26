@@ -10,14 +10,16 @@ class GlyphConsistency:
             #worth outputting
             try:
                 t=font[i]
-                if font[i].isWorthOutputting():
-                    scoreFactor = 1
-                else:
-                    scoreFactor = 0
-                score=10
-                if font[i].layers[1].selfIntersects():
-                    score=0
-                score = score * scoreFactor
+		if i in font:
+		    if font[i].isWorthOutputting():
+			scoreFactor = 1
+		    else:
+			scoreFactor = 0
+		    score=10
+		    if font[i].layers[1].selfIntersects():
+			score=0
+		    else:
+		        score = score * scoreFactor
             except:
                 score = 0
             #no counter intersection
@@ -72,7 +74,7 @@ class GlyphConsistency:
                 set_round_score+=score
                 total+=1
         font.close()
-        return (set_round_score/total)*10
+        return (set_round_score/float(total))*10
 
     def glyph_round_compare(self,glyph,pixelsize):
         glyph.export("/var/tmp/before.bmp",pixelsize,1)
