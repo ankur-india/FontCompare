@@ -81,7 +81,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         myfile.close()
 
     def PrintGlyphrelatedScore(self,scores):
-        start = time.clock()
         for score in scores:
             self.PrintMessage(str(score))
         total=len(scores)
@@ -95,9 +94,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             self.PrintMessage
             ("No glyphs for Selected Script Unicode characters")
 
-        elapsed = (time.clock() - start)    
         self.PrintMessage("The total score was "+str(final))
-        self.PrintMessage("The execution time was "+str(elapsed))
         return final
 
     def TestFromFont(self):
@@ -109,12 +106,14 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         mock_font = shelve.open("/var/tmp/tmp.mcy")
         mockfont = mock_font["font"]
         mock_font.close()
+
         fc=FontCompare()
         gc=GlyphConsistency()
     #consistency test
         self.PrintMessage("-------------------------------------------")
         #basic
         fontA = fontforge.open(self.Testfilepath)
+        start = time.clock()
         score = gc.glyph_basicConsistency(fontA,self.GetScript())
         for tup in score:
             self.PrintMessage(tup[0]+str(tup[1]))
@@ -142,10 +141,13 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.PrintMessage("-------------------------------------------")
         #rounding 
         score = gc.glyph_round_consistency(fontA, self.GetScript(),100)
+
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
+
     #font main tests
         self.PrintMessage("-------------------------------------------")
+
         #basic properties
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_basiccompare(fontA,mockfont)
@@ -182,7 +184,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score = dc.basicCompare(self.Testfilepath,mockfont,160)
         self.highresScoreBar.setValue(round(score/10))
         self.PrintMessage("High Resolution Score: "+str(score/10))
-        
         
     def GetScript(self):
         return (0x900,0x97f)#self.LanguageBox.currentIndex()
