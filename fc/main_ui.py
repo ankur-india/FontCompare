@@ -2,7 +2,11 @@
 
 # Form implementation generated from reading ui file 'ui/fontCompare.ui'
 #
+<<<<<<< HEAD
 # Created: Sun Jul 21 12:02:50 2013
+=======
+# Created: Sat Jul 20 13:43:52 2013
+>>>>>>> b33886f... updated the branch alongside the mockfont branch.
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -193,11 +197,17 @@ class Ui_MainWindow(object):
         self.languageBox.addItem(_fromUtf8(""))
         self.languageBox.addItem(_fromUtf8(""))
         self.BeginTestButton = QtGui.QPushButton(self.groupBox_3)
-        self.BeginTestButton.setGeometry(QtCore.QRect(290, 30, 95, 91))
+        self.BeginTestButton.setGeometry(QtCore.QRect(290, 30, 95, 71))
         self.BeginTestButton.setObjectName(_fromUtf8("BeginTestButton"))
         self.loadTestpushButton = QtGui.QPushButton(self.groupBox_3)
         self.loadTestpushButton.setGeometry(QtCore.QRect(10, 50, 181, 31))
         self.loadTestpushButton.setObjectName(_fromUtf8("loadTestpushButton"))
+<<<<<<< HEAD
+=======
+        self.loadStandardpushButton = QtGui.QPushButton(self.groupBox_3)
+        self.loadStandardpushButton.setGeometry(QtCore.QRect(10, 70, 181, 31))
+        self.loadStandardpushButton.setObjectName(_fromUtf8("loadStandardpushButton"))
+>>>>>>> b33886f... updated the branch alongside the mockfont branch.
         self.label_2 = QtGui.QLabel(self.groupBox_3)
         self.label_2.setGeometry(QtCore.QRect(250, 200, 54, 13))
         self.label_2.setObjectName(_fromUtf8("label_2"))
@@ -337,7 +347,11 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(15, QtGui.QApplication.translate("MainWindow", "Display: Glow Signs", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox.setItemText(16, QtGui.QApplication.translate("MainWindow", "Display: LED Display", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBox.setItemText(17, QtGui.QApplication.translate("MainWindow", "Display: TV/Mobiles Display", None, QtGui.QApplication.UnicodeUTF8))
+<<<<<<< HEAD
         self.label_17.setText(QtGui.QApplication.translate("MainWindow", "Additional Meta Information", None, QtGui.QApplication.UnicodeUTF8))
+=======
+        self.label_17.setText(QtGui.QApplication.translate("MainWindow", "Additional Meta Information: ", None, QtGui.QApplication.UnicodeUTF8))
+>>>>>>> b33886f... updated the branch alongside the mockfont branch.
         self.groupBox_4.setTitle(QtGui.QApplication.translate("MainWindow", "Test Results", None, QtGui.QApplication.UnicodeUTF8))
         self.SaveMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Save To File", None, QtGui.QApplication.UnicodeUTF8))
         self.ClearMessageBoxButton.setText(QtGui.QApplication.translate("MainWindow", "Clear All", None, QtGui.QApplication.UnicodeUTF8))

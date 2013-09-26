@@ -20,14 +20,8 @@ from os.path import dirname
 # Import the interface class
 from fc import main_ui
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
-<<<<<<< HEAD
     Testfilepath = ""
     Standardfilepath = "workinprogress"
-=======
-
-    Testfilepath = "unittests/lohit.ttf"
-    Standardfilepath = "unittests/lohit.ttf"
->>>>>>> 2466c64... simplified the code and fixed tests with erroneous results.
     def __init__(self, parent=None):
         super(MainApp, self).__init__(parent)#?????????????
         # This is because Python does not automatically
@@ -39,15 +33,10 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.BeginTestButton.clicked.connect(self.BeginTest)
         self.loadTestpushButton.clicked.connect(lambda: self.\
         OpenFontFile("test"))
-<<<<<<< HEAD
         self.actionLoadTestFont.triggered.connect(lambda: self.\
         OpenFontFile("test"))
         self.actionSaveTestResults.triggered.connect(self.SaveMessage)
         self.actionabout.triggered.connect(self.about)
-=======
-        self.loadTestpushButton.clicked.connect(lambda: self.\
-        OpenFontFile("standard"))
->>>>>>> 2466c64... simplified the code and fixed tests with erroneous results.
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
@@ -60,16 +49,16 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             QMessageBox.about(self, "Error", "No File was Loaded!")
         else:
             self.TestFromFont()
+        else:
+            QMessageBox.about(self, "Error", 
+                "Standard or Test Font missing!")
 
     def OpenFontFile(self,filetype):
         flag=0
         while flag == 0:
             filename = QFileDialog.getOpenFileName(self, 'Font File')
-<<<<<<< HEAD
             if filename == "":
                 break
-=======
->>>>>>> 2466c64... simplified the code and fixed tests with erroneous results.
             try:
                 f=fontforge.open(filename)
                 QMessageBox.about(self, "Success", 
@@ -168,12 +157,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         for tup in scores:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicScoreBar.setValue(scores[len(scores)-1][1])
-<<<<<<< HEAD
         self.PrintMessage("-------------------------------------------")
-=======
-        fontA = fontforge.open(self.Testfilepath)
-        fontB = fontforge.open(self.Standardfilepath)
->>>>>>> 2466c64... simplified the code and fixed tests with erroneous results.
         #normal test
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_facecompare(fontA,mockfont,self.GetScript(),600, \
