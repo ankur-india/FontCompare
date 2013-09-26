@@ -43,6 +43,7 @@ class FontCompare(object):
         mn=min(Testfont.upos,mockfont.upos)
         score5 = int((1/float(abs(mx-mn)))*10) if (mx-mn)!=0 else 10
         final.append(("Underline Position Score: ",score5))
+<<<<<<< HEAD
         
         mx=max(Testfont.uwidth,mockfont.uwidth)
         mn=min(Testfont.uwidth,mockfont.uwidth)
@@ -63,6 +64,21 @@ class FontCompare(object):
         final.append(("Average Basic Score: ",score/8.0))
         Testfont.close()
         return final
+=======
+        mx=max(Testfont.uwidth,Standardfont.uwidth);
+        mn=min(Testfont.uwidth,Standardfont.uwidth);
+        score5 = (1/float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10;
+        final.append(("Underline Width Score: ",score5))
+        mx=max(Testfont.xHeight,Standardfont.xHeight);
+        mn=min(Testfont.xHeight,Standardfont.xHeight);
+        score6 = 1/(float(abs(mx-mn)))*10 if (mx-mn)!=0 else 10;
+        final.append(("x Height Score: ",score6))
+        score=score1+score2+score3+score4+score5+score6;
+        final.append(("Average Basic Score: ",score/6.0))
+        Testfont.close()
+        Standardfont.close()
+        return final;
+>>>>>>> ccf1ca2... fixed indentation errors.
 
     def font_facecompare(self, Testfont, mockfont, glyphRange, \
     resolution, ptsize, pixeldepth, fonttype):
@@ -79,6 +95,7 @@ class FontCompare(object):
         scores = list()
         comparator = BitmapCompare()
         pixelsize = (resolution*ptsize)/72
+<<<<<<< HEAD
         print spritepath
         for i in range (glyphRange[0],glyphRange[1]):
             if i in Testfont:
@@ -92,3 +109,22 @@ class FontCompare(object):
             scores.append((str(hex(i))+" ",round(glyphscore)))
         Testfont.close()
         return scores
+=======
+        for unicode_value in range (glyphRange[0],glyphRange[1]):
+            if unicode_value in Standardfont:
+                if unicode_value in Testfont:
+                    comparator.initialise(pixelsize,pixeldepth)
+                    glyphname=Standardfont[unicode_value].glyphname
+                    if gtype is "normal" or "italic":
+                        glyphscore=comparator.basicbitmapScore \
+                        (Standardfont[unicode_value], \
+                        Testfont[unicode_value])
+                    if gtype is "bold":
+                        glyphscore=comparator.boldbitmapScore \
+                        (Standardfont[unicode_value], \
+                        Testfont[unicode_value])
+                    scores.append((glyphname,round(glyphscore)))
+        Testfont.close()
+        Standardfont.close()
+        return scores
+>>>>>>> ccf1ca2... fixed indentation errors.
