@@ -456,24 +456,7 @@
            </rect>
           </property>
           <property name="text">
-<<<<<<< HEAD
            <string>Load TestFont</string>
-=======
-           <string>Load Test Font</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="loadStandardpushButton">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>70</y>
-            <width>181</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Load Standard Font</string>
->>>>>>> b33886f... updated the branch alongside the mockfont branch.
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
@@ -615,11 +598,7 @@
            </rect>
           </property>
           <property name="text">
-<<<<<<< HEAD
            <string>Additional Meta Information</string>
-=======
-           <string>Additional Meta Information: </string>
->>>>>>> b33886f... updated the branch alongside the mockfont branch.
           </property>
          </widget>
         </widget>
