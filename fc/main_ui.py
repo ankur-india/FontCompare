@@ -3,7 +3,6 @@
 # Form implementation generated from reading ui file 'ui/fontCompare.ui'
 #
 # Created: Sun Jul 21 12:02:50 2013
-# Created: Sun Jul 21 00:50:14 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!

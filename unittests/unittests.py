@@ -73,7 +73,6 @@ class Basictests(unittest.TestCase):
         test3 = (0 <= test3 <= 10)
         self.failUnless(test3)
 
-
 """
 unittests for DocCompare not required.
 """
