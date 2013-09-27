@@ -35,6 +35,20 @@ A) Installation
 
 			yum install fontforge-python
 
+	You also need to install PyQt4 separately, as currently the setuptools
+	does not support automatic detection and installation of Python bindings
+	for Qt.
+
+	The commands for the installation:
+		
+               For Debian based Linux distros:
+
+                        sudo apt-get install python-qt4
+
+                For Redhat based Linux distros:
+
+                        yum install pyqt4
+
     3. Run "sudo python setup.py install" from the shell prompt, supply the 
         password if prompted for.
 

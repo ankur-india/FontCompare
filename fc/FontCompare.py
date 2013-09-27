@@ -1,6 +1,6 @@
 """
 Contains methods for making comparisions using a host of tests.
-They are also for modifying a glyph by altering its 
+They are also for modifying a glyph by altering its
 serif, stroke , stem thickness, size, italic angle etc.
 and then later producing scores by doing bitmap comparision
 """

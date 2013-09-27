@@ -3,23 +3,29 @@ from PyQt4.QtGui import QMessageBox
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtGui import QApplication
 from PyQt4.QtGui import QFileDialog
+from PyQt4.QtCore import *
 import fontforge
 import sys
 import time
 from fc.FontCompare import FontCompare
 from fc.GlyphConsistency import GlyphConsistency
 from fc.mockify import MockFont
+from fc.DocCompare import DocCompare
 import shelve
 import pkg_resources
 import shutil
 import os
 from os.path import basename
 from os.path import dirname
+from fc.DocCompare import DocCompare
+import pkg_resources
+import shutil
 # Import the interface class
 from fc import main_ui
 class MainApp(QMainWindow, main_ui.Ui_MainWindow):
     Testfilepath = ""
     Standardfilepath = "workinprogress"
+
     def __init__(self, parent=None):
         super(MainApp, self).__init__(parent)#?????????????
         # This is because Python does not automatically
@@ -35,6 +41,8 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         OpenFontFile("test"))
         self.actionSaveTestResults.triggered.connect(self.SaveMessage)
         self.actionabout.triggered.connect(self.about)
+        self.loadStandardpushButton.clicked.connect(lambda: self.\
+        OpenFontFile("standard"))
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
@@ -47,6 +55,12 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             QMessageBox.about(self, "Error", "No File was Loaded!")
         else:
             self.TestFromFont()
+        if self.Testfilepath!="" and self.Standardfilepath!="":
+            self.TestFromFont()
+        else:
+            QMessageBox.about(self, "Error", 
+                "Standard or Test Font missing!")
+
 
     def OpenFontFile(self,filetype):
         flag=0
@@ -80,7 +94,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         myfile.close()
 
     def PrintGlyphrelatedScore(self,scores):
-        start = time.clock()
         for score in scores:
             self.PrintMessage(str(score))
         total=len(scores)
@@ -94,9 +107,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
             self.PrintMessage
             ("No glyphs for Selected Script Unicode characters")
 
-        elapsed = (time.clock() - start)    
         self.PrintMessage("The total score was "+str(final))
-        self.PrintMessage("The execution time was "+str(elapsed))
         return final
 
     def TestFromFont(self):
@@ -108,6 +119,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         mock_font = shelve.open("/var/tmp/tmp.mcy")
         mockfont = mock_font["font"]
         mock_font.close()
+
         fc=FontCompare()
         gc=GlyphConsistency()
     #consistency test
@@ -118,12 +130,13 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         for tup in score:
             self.PrintMessage(tup[0]+str(tup[1]))
         self.BasicConsistencyScoreBar.setValue(score[len(score)-1][1])
-        self.PrintMessage("-------------------------------------------")
+        self.PrintMessage("----------------------------------------")
         #numerals
         score = gc.glyph_basicset_consistency(fontA, (0x960,0x96f))
         self.PrintMessage("Numeral Consistency Score is "+str(score))
         self.NumeralScoreBar.setValue(round(score))
         self.PrintMessage("-------------------------------------------")
+        self.PrintMessage("----------------------------------------")
         #consonants
         score = gc.glyph_basicset_consistency(fontA, (0x915,0x939))
         self.PrintMessage("Consonant Consistency Score is "+str(score))
@@ -141,10 +154,18 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         self.PrintMessage("-------------------------------------------")
         #rounding 
         score = gc.glyph_round_consistency(fontA, self.GetScript(),100)
+
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
     #font main tests
-        self.PrintMessage("-------------------------------------------")
+        self.PrintMessage("----------------------------------------")
+        #rounding -->this is placed at last since it changes the font
+        #and the font object is closed after this test
+        score = gc.glyph_round_consistency(fontA, self.GetScript())
+        self.PrintMessage("Rounding Consistency Score is "+str(score))
+        self.RoundingScoreBar.setValue(round(score))
+    #font main tests
+        self.PrintMessage("----------------------------------------")
         #basic properties
         fontA = fontforge.open(self.Testfilepath)
         scores = fc.font_basiccompare(fontA,mockfont)
@@ -181,8 +202,7 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         score = dc.basicCompare(self.Testfilepath,mockfont,160)
         self.highresScoreBar.setValue(round(score/10))
         self.PrintMessage("High Resolution Score: "+str(score/10))
-        
-        
+
     def GetScript(self):
         return (0x900,0x97f)#self.LanguageBox.currentIndex()
 
