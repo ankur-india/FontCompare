@@ -15,23 +15,23 @@ mockfont = mock_font["font"]
 mock_font.close()
 
 class Basictests(unittest.TestCase):
-        def testFontCompare(self):
+    def testFontCompare(self):
         cm = FontCompare()
         testfont = fontforge.open("unittests/lohit.ttf")
-        basic = cm.font_basiccompare(testfont,testfont)
+        basic = cm.font_basiccompare(testfont,mockfont)
         bastest=1
         for tup in basic:
             if tup[1]!=10:
                 bastest=0
         self.failUnless(bastest)
         testfont = fontforge.open("unittests/lohit.ttf")
-        bold = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
+        bold = cm.font_facecompare(testfont,mockfont,(0x900,0x97f),\
         600,12,1,"bold")
         testfont = fontforge.open("unittests/lohit.ttf")
-        italic = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
+        italic = cm.font_facecompare(testfont,mockfont,(0x900,0x97f),\
         600,12,1,"italic")
         testfont = fontforge.open("unittests/lohit.ttf")
-        normal = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
+        normal = cm.font_facecompare(testfont,mockfont,(0x900,0x97f),\
         600,12,1,"normal")
         test = 1
         print len(normal)
@@ -49,48 +49,6 @@ class Basictests(unittest.TestCase):
         test = 0
         for tup in normal:
             if tup[1]==100 or tup[1]==0:
-                test=1
-                break
-        self.failUnless(test is 1)
-        test = 0
-        if len(normal) == len(bold) == len(italic):
-            test = 1
-        self.failUnless(test is 1)
-
-    def testFontCompare(self):
-        cm = FontCompare()
-        testfont = fontforge.open("unittests/lohit.ttf")
-        basic = cm.font_basiccompare(testfont,testfont)
-        bastest=1
-        for tup in basic:
-            if tup[1]!=10:
-                bastest=0
-        self.failUnless(bastest)
-        testfont = fontforge.open("unittests/lohit.ttf")
-        bold = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
-        600,12,1,"bold") 
-        testfont = fontforge.open("unittests/lohit.ttf")
-        italic = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
-        600,12,1,"italic") 
-        testfont = fontforge.open("unittests/lohit.ttf")
-        normal = cm.font_facecompare(testfont,testfont,(0x900,0x97f),\
-        600,12,1,"normal") 
-        test = 1
-        print len(normal)
-        for tup in bold:
-            if tup[1]==100 or tup[1]==0:
-                test1=1
-                break
-        self.failUnless(test)
-        test = 0
-        for tup in italic:
-            if tup[1]==100 or tup[1]==0:
-                test=1
-                break
-        self.failUnless(test is 1)
-        test = 0
-        for tup in normal:
-            if tup[1]==100 or tup[1]==0: 
                 test=1
                 break
         self.failUnless(test is 1)
