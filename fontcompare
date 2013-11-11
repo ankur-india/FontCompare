@@ -41,8 +41,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         OpenFontFile("test"))
         self.actionSaveTestResults.triggered.connect(self.SaveMessage)
         self.actionabout.triggered.connect(self.about)
-        self.loadStandardpushButton.clicked.connect(lambda: self.\
-        OpenFontFile("standard"))
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
@@ -155,13 +153,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         #rounding 
         score = gc.glyph_round_consistency(fontA, self.GetScript(),100)
 
-        self.PrintMessage("Rounding Consistency Score is "+str(score))
-        self.RoundingScoreBar.setValue(round(score))
-    #font main tests
-        self.PrintMessage("----------------------------------------")
-        #rounding -->this is placed at last since it changes the font
-        #and the font object is closed after this test
-        score = gc.glyph_round_consistency(fontA, self.GetScript())
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
     #font main tests
