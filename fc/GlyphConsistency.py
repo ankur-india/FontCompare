@@ -24,8 +24,8 @@ class GlyphConsistency:
                 score = 0
             #no counter intersection
             total+=score
-            scores.append((str(hex(i))+" ",score))
-        scores.append(("Basic Consistency Score: ",total/len(scores)))
+            scores.append((i,score))
+        #scores.append(("Basic Consistency Score: ",total/len(scores)))
         return scores
 
     def glyph_basicset_consistency(self, font, range_tuple):
