@@ -1,13 +1,13 @@
 FONTCOMPARE
 Synopsis: A tool which tries to assess the aesthetic quality of Indic 
-fonts by making comparisions with standard set of features desired in a
+fonts by making comparisons with standard set of features desired in a
 font, and assigning scores in various categories. This way, the font
-developers know where they are headed, and it would assisst in making
+developers know where they are headed, and it would assist in making
 Indic fonts better in the longer run.
 
 Current State: Currently the application supports very basic tests, and 
-that too for Devanagri script only. The basic tests makes use of 
-comparision with a standard looking Devanagri font, so that even a novice
+that too for Devanagari script only. The basic tests makes use of
+comparison with a standard looking Devanagri font, so that even a novice
 font developer would know that he/she is headed the right way. However this
 method of assessment greatly reduces the scope of providing tests for 
 artistic fonts. To overcome this drawback what is needed is that we have 
