@@ -321,7 +321,7 @@ class Ui_MainWindow(object):
         self.BasicScoreBar.setFormat(_translate("MainWindow", "%v", None))
         self.groupBox_3.setTitle(_translate("MainWindow", "Control Box", None))
         self.languageBox.setItemText(0, _translate("MainWindow", "All Range", None))
-        self.languageBox.setItemText(1, _translate("MainWindow", "Devanagri", None))
+        self.languageBox.setItemText(1, _translate("MainWindow", "Devanagari", None))
         self.languageBox.setItemText(2, _translate("MainWindow", "Bengali ", None))
         self.languageBox.setItemText(3, _translate("MainWindow", "English", None))
         self.BeginTestButton.setText(_translate("MainWindow", "Begin Test!", None))

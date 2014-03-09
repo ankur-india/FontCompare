@@ -419,7 +419,7 @@
           </item>
           <item>
            <property name="text">
-            <string>Devanagri</string>
+            <string>Devanagari</string>
            </property>
           </item>
           <item>
@@ -456,7 +456,7 @@
            </rect>
           </property>
           <property name="text">
-           <string>Load TestFont</string>
+           <string>Load Test Font</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_2">
