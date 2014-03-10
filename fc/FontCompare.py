@@ -89,6 +89,6 @@ class FontCompare(object):
                 glyphscore*=100
             else:
                 glyphscore=0
-            scores.append((str(hex(i))+" ",round(glyphscore)))
+            scores.append((i,round(glyphscore)))
         Testfont.close()
         return scores

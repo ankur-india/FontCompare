@@ -41,8 +41,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         OpenFontFile("test"))
         self.actionSaveTestResults.triggered.connect(self.SaveMessage)
         self.actionabout.triggered.connect(self.about)
-        self.loadStandardpushButton.clicked.connect(lambda: self.\
-        OpenFontFile("standard"))
         self.ClearMessageBoxButton.clicked.connect(self.ClearMessage)
         self.SaveMessageBoxButton.clicked.connect(self.SaveMessage)
 
@@ -94,12 +92,12 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         myfile.close()
 
     def PrintGlyphrelatedScore(self,scores):
-        for score in scores:
-            self.PrintMessage(str(score))
         total=len(scores)
         final=0
-        for gtuple in scores:
-            final+=gtuple[1]
+        for score in scores:
+			p=unichr(score[0])+"  "+str(score[1])
+			final+=score[1]
+			self.PrintMessage(p)
         if final:
             final = (final/float(total))/10
         else:
@@ -127,9 +125,12 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         #basic
         fontA = fontforge.open(self.Testfilepath)
         score = gc.glyph_basicConsistency(fontA,self.GetScript())
+        total=0
         for tup in score:
-            self.PrintMessage(tup[0]+str(tup[1]))
-        self.BasicConsistencyScoreBar.setValue(score[len(score)-1][1])
+            self.PrintMessage(unichr(tup[0])+" "+str(tup[1]))
+            total+=tup[1]/10
+        self.BasicConsistencyScoreBar.setValue(total/len(score))
+        self.PrintMessage("Basic Consistency Score: "+str(total/len(score)))
         self.PrintMessage("----------------------------------------")
         #numerals
         score = gc.glyph_basicset_consistency(fontA, (0x960,0x96f))
@@ -155,13 +156,6 @@ class MainApp(QMainWindow, main_ui.Ui_MainWindow):
         #rounding 
         score = gc.glyph_round_consistency(fontA, self.GetScript(),100)
 
-        self.PrintMessage("Rounding Consistency Score is "+str(score))
-        self.RoundingScoreBar.setValue(round(score))
-    #font main tests
-        self.PrintMessage("----------------------------------------")
-        #rounding -->this is placed at last since it changes the font
-        #and the font object is closed after this test
-        score = gc.glyph_round_consistency(fontA, self.GetScript())
         self.PrintMessage("Rounding Consistency Score is "+str(score))
         self.RoundingScoreBar.setValue(round(score))
     #font main tests
